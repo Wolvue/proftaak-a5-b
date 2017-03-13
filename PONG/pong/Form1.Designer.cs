@@ -190,6 +190,7 @@
             // 
             this.snelheid.Enabled = true;
             this.snelheid.Interval = 20;
+            this.snelheid.Tick += new System.EventHandler(this.snelheid_Tick_1);
             // 
             // spelerev3
             // 

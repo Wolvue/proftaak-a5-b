@@ -85,92 +85,7 @@ namespace PONG
 
         private void snelheid_Tick(object sender, EventArgs e)
         {
-            Bal.Location = new Point(Bal.Location.X + balpos1, Bal.Location.Y + balpos2);
 
-            
-            if (Bal.Bottom >= borderdown.Top)
-            {
-                balpos2 = Convert.ToInt32(speedup1);
-            }
-
-            if (Bal.Top <= bordertop.Bottom)
-            {
-                balpos2 = Convert.ToInt32(speedup2);
-            }
-
-            // bal raakt bot
-            if (Bal.Right >= speler2.Left && Bal.Bottom >= speler2.Top && Bal.Top <= speler2.Bottom)
-            {
-                    double rspeed1 = speedbalgen.NextDouble() * (0.5 - 0.15) + 0.1;
-                    double rspeed2 = speedbalgen.NextDouble() * (0.5 - 0.15) + 0.1;
-                
-                //  if (Snelheid.Interval >= 2)
-                //  {
-                //     Snelheid.Interval -= 1;
-                //  spelerev3.Interval -= 1;
-                //  }
-                speedup1 -= rspeed1;
-                speedup2 += rspeed2;
-                balpos1 = Convert.ToInt32(speedup1);
-                ev3Messenger.SendMessage("hit", "scream");
-            }
-
-            // bal raakt speler
-            if (Bal.Left <= speler1.Right && Bal.Bottom >= speler1.Top && Bal.Top <= speler1.Bottom)
-            {
-               // if (Snelheid.Interval >= 2)
-              //  {
-              //      Snelheid.Interval -= 1;
-                  //  spelerev3.Interval -= 1;
-              //  }
-                
-
-                double rspeed1 = speedbalgen.NextDouble() * (0.5 - 0.15) + 0.1;
-                double rspeed2 = speedbalgen.NextDouble() * (0.5 - 0.15) + 0.1;
-                
-                speedup1 -= rspeed1;
-                speedup2 += rspeed2;
-                balpos1 = Convert.ToInt32(speedup2);
-                ev3Messenger.SendMessage("hit", "scream");
-            }
-
-            // goal gemaakt door bot
-            if (Bal.Left <= goal1.Right)
-            {
-                puntenspeler2 += 1;
-                punten2.Text = Convert.ToString(puntenspeler2);
-                Bal.Location = new Point(speler1.Right + 5, (speler1.Top + speler1.Bottom) / 2 );
-                speedup1 = -5;
-                speedup2 = 5;
-
-              //  Snelheid.Interval = 20;
-                //spelerev3.Interval = 20;
-                goalgemaakt(1);
-            //    ev3Messenger.SendMessage("boo", "scream");
-            }
-            // goal gemaakt door 1
-            if (Bal.Right >= goal2.Left)
-            {
-                puntenspeler1 += 1;
-                punten1.Text = Convert.ToString(puntenspeler1);
-                Bal.Location = new Point(speler2.Left - 18, (speler2.Top + speler2.Bottom) / 2);
-                speedup1 = -5;
-                speedup2 = 5;
-                //spelerev3.Interval = 20;
-               // Snelheid.Interval = 20;
-                goalgemaakt(1);
-            //    ev3Messenger.SendMessage("yay", "scream");
-            }
-            // bot
-            if ((speler2.Top + speler2.Bottom) / 2 <= (Bal.Top + Bal.Bottom) / 2)
-            {
-               speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + 6);
-            }
-
-            if ((speler2.Top + speler2.Bottom) / 2 >= (Bal.Top + Bal.Bottom) / 2)
-            {
-                speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - 6);
-            }
         }
 
 
@@ -243,6 +158,96 @@ namespace PONG
         private void invisP1_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        private void snelheid_Tick_1(object sender, EventArgs e)
+        {
+            Bal.Location = new Point(Bal.Location.X + balpos1, Bal.Location.Y + balpos2);
+
+
+            if (Bal.Bottom >= borderdown.Top)
+            {
+                balpos2 = Convert.ToInt32(speedup1);
+            }
+
+            if (Bal.Top <= bordertop.Bottom)
+            {
+                balpos2 = Convert.ToInt32(speedup2);
+            }
+
+            // bal raakt bot
+            if (Bal.Right >= speler2.Left && Bal.Bottom >= speler2.Top && Bal.Top <= speler2.Bottom)
+            {
+                double rspeed1 = speedbalgen.NextDouble() * (0.5 - 0.15) + 0.1;
+                double rspeed2 = speedbalgen.NextDouble() * (0.5 - 0.15) + 0.1;
+
+                //  if (Snelheid.Interval >= 2)
+                //  {
+                //     Snelheid.Interval -= 1;
+                //  spelerev3.Interval -= 1;
+                //  }
+                speedup1 -= rspeed1;
+                speedup2 += rspeed2;
+                balpos1 = Convert.ToInt32(speedup1);
+                ev3Messenger.SendMessage("hit", "scream");
+            }
+
+            // bal raakt speler
+            if (Bal.Left <= speler1.Right && Bal.Bottom >= speler1.Top && Bal.Top <= speler1.Bottom)
+            {
+                // if (Snelheid.Interval >= 2)
+                //  {
+                //      Snelheid.Interval -= 1;
+                //  spelerev3.Interval -= 1;
+                //  }
+
+
+                double rspeed1 = speedbalgen.NextDouble() * (0.5 - 0.15) + 0.1;
+                double rspeed2 = speedbalgen.NextDouble() * (0.5 - 0.15) + 0.1;
+
+                speedup1 -= rspeed1;
+                speedup2 += rspeed2;
+                balpos1 = Convert.ToInt32(speedup2);
+                ev3Messenger.SendMessage("hit", "scream");
+            }
+
+            // goal gemaakt door bot
+            if (Bal.Left <= goal1.Right)
+            {
+                puntenspeler2 += 1;
+                punten2.Text = Convert.ToString(puntenspeler2);
+                Bal.Location = new Point(speler1.Right + 5, (speler1.Top + speler1.Bottom) / 2);
+                speedup1 = -5;
+                speedup2 = 5;
+
+                //  Snelheid.Interval = 20;
+                //spelerev3.Interval = 20;
+                goalgemaakt(1);
+                //    ev3Messenger.SendMessage("boo", "scream");
+            }
+            // goal gemaakt door 1
+            if (Bal.Right >= goal2.Left)
+            {
+                puntenspeler1 += 1;
+                punten1.Text = Convert.ToString(puntenspeler1);
+                Bal.Location = new Point(speler2.Left - 18, (speler2.Top + speler2.Bottom) / 2);
+                speedup1 = -5;
+                speedup2 = 5;
+                //spelerev3.Interval = 20;
+                // Snelheid.Interval = 20;
+                goalgemaakt(1);
+                //    ev3Messenger.SendMessage("yay", "scream");
+            }
+            // bot
+            if ((speler2.Top + speler2.Bottom) / 2 <= (Bal.Top + Bal.Bottom) / 2)
+            {
+                speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + 6);
+            }
+
+            if ((speler2.Top + speler2.Bottom) / 2 >= (Bal.Top + Bal.Bottom) / 2)
+            {
+                speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - 6);
+            }
         }
     }
 }
