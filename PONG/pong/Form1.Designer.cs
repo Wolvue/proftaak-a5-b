@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.speelbord = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.Bal = new System.Windows.Forms.PictureBox();
             this.goal1 = new System.Windows.Forms.PictureBox();
             this.goal2 = new System.Windows.Forms.PictureBox();
@@ -43,7 +42,6 @@
             this.speler1 = new System.Windows.Forms.PictureBox();
             this.Snelheid = new System.Windows.Forms.Timer(this.components);
             this.spelerev3 = new System.Windows.Forms.Timer(this.components);
-            this.invisibility = new System.Windows.Forms.Timer(this.components);
             this.speelbord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Bal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goal1)).BeginInit();
@@ -61,7 +59,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.speelbord.AutoSize = true;
             this.speelbord.BackColor = System.Drawing.Color.Black;
-            this.speelbord.Controls.Add(this.label1);
             this.speelbord.Controls.Add(this.Bal);
             this.speelbord.Controls.Add(this.goal1);
             this.speelbord.Controls.Add(this.goal2);
@@ -77,16 +74,6 @@
             this.speelbord.Size = new System.Drawing.Size(705, 468);
             this.speelbord.TabIndex = 0;
             this.speelbord.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(245, 400);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
             // 
             // Bal
             // 
@@ -254,8 +241,6 @@
         private System.Windows.Forms.PictureBox goal1;
         private System.Windows.Forms.PictureBox Bal;
         private System.Windows.Forms.Timer spelerev3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Timer invisibility;
     }
 }
 

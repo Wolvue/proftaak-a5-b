@@ -118,7 +118,7 @@ namespace PONG
             {
                     double rspeed1 = speedbalgen.NextDouble() * (0.5 - 0.15) + 0.1;
                     double rspeed2 = speedbalgen.NextDouble() * (0.5 - 0.15) + 0.1;
-                label1.Text = Convert.ToString(rspeed1);
+                
                 //  if (Snelheid.Interval >= 2)
                 //  {
                 //     Snelheid.Interval -= 1;
@@ -142,7 +142,7 @@ namespace PONG
 
                 double rspeed1 = speedbalgen.NextDouble() * (0.5 - 0.15) + 0.1;
                 double rspeed2 = speedbalgen.NextDouble() * (0.5 - 0.15) + 0.1;
-                label1.Text = Convert.ToString(rspeed1);
+                
                 speedup1 -= rspeed1;
                 speedup2 += rspeed2;
                 balpos1 = Convert.ToInt32(speedup2);
