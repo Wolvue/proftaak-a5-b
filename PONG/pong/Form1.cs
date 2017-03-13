@@ -88,7 +88,7 @@ namespace PONG
             // }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void snelheid_Tick(object sender, EventArgs e)
         {
             Bal.Location = new Point(Bal.Location.X + balpos1, Bal.Location.Y + balpos2);
 
@@ -193,12 +193,12 @@ namespace PONG
             if (a == 0)
             {
 
-                Snelheid.Enabled = true;
+                snelheid.Enabled = true;
                 
             }
             else if (a == 1)
             {
-                Snelheid.Enabled = false;
+                snelheid.Enabled = false;
             }
         }
 

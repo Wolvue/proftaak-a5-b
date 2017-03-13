@@ -40,7 +40,7 @@
             this.punten1 = new System.Windows.Forms.Label();
             this.speler2 = new System.Windows.Forms.PictureBox();
             this.speler1 = new System.Windows.Forms.PictureBox();
-            this.Snelheid = new System.Windows.Forms.Timer(this.components);
+            this.snelheid = new System.Windows.Forms.Timer(this.components);
             this.spelerev3 = new System.Windows.Forms.Timer(this.components);
             this.speelbord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Bal)).BeginInit();
@@ -73,7 +73,6 @@
             this.speelbord.Name = "speelbord";
             this.speelbord.Size = new System.Drawing.Size(705, 468);
             this.speelbord.TabIndex = 0;
-
             // 
             // Bal
             // 
@@ -186,11 +185,10 @@
             this.speler1.TabIndex = 0;
             this.speler1.TabStop = false;
             // 
-            // Snelheid
+            // snelheid
             // 
-            this.Snelheid.Enabled = true;
-            this.Snelheid.Interval = 20;
-            this.Snelheid.Tick += new System.EventHandler(this.timer1_Tick);
+            this.snelheid.Enabled = true;
+            this.snelheid.Interval = 20;
             // 
             // spelerev3
             // 
@@ -209,7 +207,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pong";
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.speelbord.ResumeLayout(false);
             this.speelbord.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Bal)).EndInit();
@@ -232,7 +229,7 @@
         private System.Windows.Forms.PictureBox speler1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label punten2;
-        private System.Windows.Forms.Timer Snelheid;
+        private System.Windows.Forms.Timer snelheid;
         private System.Windows.Forms.PictureBox borderdown;
         private System.Windows.Forms.PictureBox bordertop;
         private System.Windows.Forms.PictureBox goal2;
