@@ -73,7 +73,7 @@
             this.speelbord.Name = "speelbord";
             this.speelbord.Size = new System.Drawing.Size(705, 468);
             this.speelbord.TabIndex = 0;
-            this.speelbord.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+
             // 
             // Bal
             // 
@@ -151,7 +151,6 @@
             this.punten2.Size = new System.Drawing.Size(46, 43);
             this.punten2.TabIndex = 4;
             this.punten2.Text = "0";
-            this.punten2.Click += new System.EventHandler(this.punten2_Click);
             // 
             // punten1
             // 
@@ -209,7 +208,6 @@
             this.Name = "Pong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pong";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Pong_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.speelbord.ResumeLayout(false);

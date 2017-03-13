@@ -13,6 +13,8 @@ using EV3MessengerLib;
 
 namespace PONG
 {
+
+    // hallo simon
     public partial class Pong : Form
     {
         int balpos1 = 5;
@@ -194,22 +196,7 @@ namespace PONG
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-
-        private void punten2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Pong_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-
-            
-        }
 
         private void goalgemaakt(int a)
         {
