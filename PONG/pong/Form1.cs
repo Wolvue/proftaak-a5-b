@@ -37,17 +37,13 @@ namespace PONG
         System.Media.SoundPlayer backgroundsong3 = new System.Media.SoundPlayer(@"C:\Users\gebruiker\Documents\pong game stuff\undertale.wav");
         System.Media.SoundPlayer geraakt1 = new System.Media.SoundPlayer(@"C:\Users\gebruiker\Documents\pong game stuff\hit.wav");
         System.Media.SoundPlayer powerupsound = new System.Media.SoundPlayer(@"C:\Users\gebruiker\Documents\pong game stuff\coin.wav");
+
         public Pong()
         {
             InitializeComponent();
             ev3Messenger = new EV3Messenger();
             jukebox();
             ev3Messenger.Connect("COM3");
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
@@ -58,7 +54,6 @@ namespace PONG
                 if (speler1.Top >= bordertop.Bottom )
                 {speler1.Location = new Point(speler1.Location.X, speler1.Location.Y - offset);}
                 goalgemaakt(0);
-                
             }
             else if (e.KeyChar == 's')
             {
@@ -93,11 +88,9 @@ namespace PONG
             Bal.Location = new Point(Bal.Location.X + balpos1, Bal.Location.Y + balpos2);
 
             
-
             if (Bal.Bottom >= borderdown.Top)
             {
                 balpos2 = Convert.ToInt32(speedup1);
-                
             }
 
             if (Bal.Top <= bordertop.Bottom)
@@ -120,8 +113,8 @@ namespace PONG
                 speedup2 += rspeed2;
                 balpos1 = Convert.ToInt32(speedup1);
                 ev3Messenger.SendMessage("hit", "scream");
-
             }
+
             // bal raakt speler
             if (Bal.Left <= speler1.Right && Bal.Bottom >= speler1.Top && Bal.Top <= speler1.Bottom)
             {
@@ -139,12 +132,11 @@ namespace PONG
                 speedup2 += rspeed2;
                 balpos1 = Convert.ToInt32(speedup2);
                 ev3Messenger.SendMessage("hit", "scream");
-
             }
+
             // goal gemaakt door bot
             if (Bal.Left <= goal1.Right)
             {
-                
                 puntenspeler2 += 1;
                 punten2.Text = Convert.ToString(puntenspeler2);
                 Bal.Location = new Point(speler1.Right + 5, (speler1.Top + speler1.Bottom) / 2 );
@@ -179,11 +171,6 @@ namespace PONG
             {
                 speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - 6);
             }
-
-
-
-
-
         }
 
 
@@ -192,9 +179,7 @@ namespace PONG
         {
             if (a == 0)
             {
-
                 snelheid.Enabled = true;
-                
             }
             else if (a == 1)
             {
@@ -253,6 +238,11 @@ namespace PONG
                     goalgemaakt(0);
                 }
             }
+        }
+
+        private void invisP1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

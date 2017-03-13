@@ -42,6 +42,8 @@
             this.speler1 = new System.Windows.Forms.PictureBox();
             this.snelheid = new System.Windows.Forms.Timer(this.components);
             this.spelerev3 = new System.Windows.Forms.Timer(this.components);
+            this.invisP1 = new System.Windows.Forms.Timer(this.components);
+            this.invisP2 = new System.Windows.Forms.Timer(this.components);
             this.speelbord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Bal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goal1)).BeginInit();
@@ -163,7 +165,6 @@
             this.punten1.Size = new System.Drawing.Size(46, 43);
             this.punten1.TabIndex = 2;
             this.punten1.Text = "0";
-            this.punten1.Click += new System.EventHandler(this.label1_Click);
             // 
             // speler2
             // 
@@ -195,6 +196,15 @@
             this.spelerev3.Enabled = true;
             this.spelerev3.Interval = 20;
             this.spelerev3.Tick += new System.EventHandler(this.spelerev3_Tick);
+            // 
+            // invisP1
+            // 
+            this.invisP1.Interval = 3000;
+            this.invisP1.Tick += new System.EventHandler(this.invisP1_Tick);
+            // 
+            // invisP2
+            // 
+            this.invisP2.Interval = 3000;
             // 
             // Pong
             // 
@@ -236,6 +246,8 @@
         private System.Windows.Forms.PictureBox goal1;
         private System.Windows.Forms.PictureBox Bal;
         private System.Windows.Forms.Timer spelerev3;
+        private System.Windows.Forms.Timer invisP1;
+        private System.Windows.Forms.Timer invisP2;
     }
 }
 
