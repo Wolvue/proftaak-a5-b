@@ -42,8 +42,7 @@
             this.speler1 = new System.Windows.Forms.PictureBox();
             this.snelheid = new System.Windows.Forms.Timer(this.components);
             this.spelerev3 = new System.Windows.Forms.Timer(this.components);
-            this.invisP1 = new System.Windows.Forms.Timer(this.components);
-            this.invisP2 = new System.Windows.Forms.Timer(this.components);
+            this.powerup = new System.Windows.Forms.Timer(this.components);
             this.speelbord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Bal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goal1)).BeginInit();
@@ -198,15 +197,11 @@
             this.spelerev3.Interval = 20;
             this.spelerev3.Tick += new System.EventHandler(this.spelerev3_Tick);
             // 
-            // invisP1
+            // powerup
             // 
-            this.invisP1.Interval = 3000;
-            this.invisP1.Tick += new System.EventHandler(this.invisP1_Tick);
-            // 
-            // invisP2
-            // 
-            this.invisP2.Interval = 3000;
-            this.invisP2.Tick += new System.EventHandler(this.invisP2_Tick);
+            this.powerup.Enabled = true;
+            this.powerup.Interval = 1000;
+            this.powerup.Tick += new System.EventHandler(this.powerup_Tick);
             // 
             // Pong
             // 
@@ -248,8 +243,7 @@
         private System.Windows.Forms.PictureBox goal1;
         private System.Windows.Forms.PictureBox Bal;
         private System.Windows.Forms.Timer spelerev3;
-        private System.Windows.Forms.Timer invisP1;
-        private System.Windows.Forms.Timer invisP2;
+        private System.Windows.Forms.Timer powerup;
     }
 }
 

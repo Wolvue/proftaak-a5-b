@@ -26,6 +26,11 @@ namespace PONG
 
         int offset = 10;
 
+        int invis1time = 0;
+        int invis2time = 0;
+
+        //memorie aanmaken voor oude snelheid terug te zetten na afloop sl
+
         private EV3Messenger ev3Messenger;
 
 
@@ -46,6 +51,7 @@ namespace PONG
             ev3Messenger.Connect("COM3");
         }
 
+        //Het bewegen van speler 1
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
             
@@ -69,31 +75,32 @@ namespace PONG
             if (e.KeyChar == '1')
             {
                 speler1.BackColor = Color.Black;
-                invisP1.Enabled = true;
+                invis1time = 1;
             }
             //Het activeren van de invisibility power up voor speler 2
             if (e.KeyChar == '2')
             {
                 speler2.BackColor = Color.Black;
-                invisP2.Enabled = true;
+                invis2time = 2;
             }
 
-           // if (e.KeyChar == 'i')
-           //  {
-           //    if (speler2.Top >= bordertop.Bottom)
-           //     {
-           //         speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - offset);
-           //     }
+            //Het bewegen van speler 2
+            //if (e.KeyChar == 'i')
+            //{
+            //   if (speler2.Top >= bordertop.Bottom)
+            //    {
+            //        speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - offset);
+            //    }
                 
-           // }
+            //}
 
             //else if (e.KeyChar == 'k')
-           // {
+            //{
             //    if (speler2.Bottom <= borderdown.Top)
-             //   {
-             //       speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + offset);
-             //   }
-            // }
+            //   {
+            //       speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + offset);
+            //   }
+            //}
         }
 
         private void goalgemaakt(int a)
@@ -235,7 +242,7 @@ namespace PONG
                 speedup1 = -5;
                 speedup2 = 5;
                 //spelerev3.Interval = 20;
-                // Snelheid.Interval = 20;
+                //Snelheid.Interval = 20;
                 goalgemaakt(1);
                 //    ev3Messenger.SendMessage("yay", "scream");
             }
@@ -252,16 +259,29 @@ namespace PONG
         }
 
         //Het deactiveren van de invisibility power up voor speler 1
-        private void invisP1_Tick(object sender, EventArgs e)
+
+        private void powerup_Tick(object sender, EventArgs e)
         {
-            speler1.BackColor = Color.White;
-            invisP1.Enabled = false;
-        }
-        //Het deactiveren van de invisibility power up voor speler 2
-        private void invisP2_Tick(object sender, EventArgs e)
-        {
-            speler2.BackColor = Color.White;
-            invisP2.Enabled = false;
+            if(invis1time >= 1)
+            {
+                invis1time++;
+                if (invis1time == 4)
+                {
+                    speler1.BackColor = Color.White;
+                    invis1time = 0;
+                }
+            }
+
+            if (invis2time >= 1)
+            {
+                invis2time++;
+                if (invis2time == 4)
+                {
+                    speler2.BackColor = Color.White;
+                    invis2time = 0;
+                }
+            }
+
         }
     }
 }
