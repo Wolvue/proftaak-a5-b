@@ -24,12 +24,15 @@ namespace PONG
         int puntenspeler1 = 0;
         int puntenspeler2 = 0;
 
-        int offset = 10;
+        int offsetP1 = 10;
+        int offsetP2 = 10;
 
-        int invis1time = 0;
-        int invis2time = 0;
+        //Het aanmaken voor timers voor van de power ups (exclusief speedbal & fireball)
+        int invis1timer = 0;
+        int invis2timer = 0;
+        int swap1timer = 0;
+        int swap2timer = 0;
 
-        //memorie aanmaken voor oude snelheid terug te zetten na afloop sl
 
         private EV3Messenger ev3Messenger;
 
@@ -54,53 +57,69 @@ namespace PONG
         //Het bewegen van speler 1
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
             if (e.KeyChar == 'w')
             {
                 if (speler1.Top >= bordertop.Bottom )
-                {speler1.Location = new Point(speler1.Location.X, speler1.Location.Y - offset);}
+                {speler1.Location = new Point(speler1.Location.X, speler1.Location.Y - offsetP1);}
                 goalgemaakt(0);
             }
             else if (e.KeyChar == 's')
             {
                 if (speler1.Bottom <= borderdown.Top)
                 {
-                    speler1.Location = new Point(speler1.Location.X, speler1.Location.Y + offset);
+                    speler1.Location = new Point(speler1.Location.X, speler1.Location.Y + offsetP1);
                     goalgemaakt(0);
                 }
-                
             }
 
+            //Invisibility
             //Het activeren van de invisibility power up voor speler 1
             if (e.KeyChar == '1')
             {
                 speler1.BackColor = Color.Black;
-                invis1time = 1;
+                invis1timer = 1;
             }
             //Het activeren van de invisibility power up voor speler 2
             if (e.KeyChar == '2')
             {
                 speler2.BackColor = Color.Black;
-                invis2time = 2;
+                invis2timer = 1;
             }
 
-            //Het bewegen van speler 2
-            //if (e.KeyChar == 'i')
-            //{
-            //   if (speler2.Top >= bordertop.Bottom)
-            //    {
-            //        speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - offset);
-            //    }
-                
-            //}
+            //Swap Controls
+            //Het activeren van de swap power up voor speler 1
+            if (e.KeyChar == '3')
+            {
+                offsetP1 = -10;
+                swap1timer = 1;
+            }
+            //Het activeren van de swap power uup voor speler 2
+            /*if (e.KeyChar == '4')
+            {
+                offsetP2 = -10;
+                swap2timer = 1;
+            }*/
+        
 
-            //else if (e.KeyChar == 'k')
-            //{
-            //    if (speler2.Bottom <= borderdown.Top)
-            //   {
-            //       speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + offset);
-            //   }
-            //}
+
+
+            /*Het bewegen van speler 2
+            if (e.KeyChar == 'i')
+            {
+                if (speler2.Top >= bordertop.Bottom)
+                {
+                    speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - offsetP2);
+                }
+               
+            }
+
+            else if (e.KeyChar == 'k')
+            {
+                if (speler2.Bottom <= borderdown.Top)
+                {
+                   speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + offsetP2);
+                }
+            }*/
         }
 
         private void goalgemaakt(int a)
@@ -138,7 +157,7 @@ namespace PONG
             if (message != null && message.MailboxTitle == "up")
             {
                 if (speler1.Top >= bordertop.Bottom)
-                { speler1.Location = new Point(speler1.Location.X, speler1.Location.Y - offset); }
+                { speler1.Location = new Point(speler1.Location.X, speler1.Location.Y - offsetP1); }
                 goalgemaakt(0);
             }
 
@@ -146,7 +165,7 @@ namespace PONG
             {
                 if (speler1.Bottom <= borderdown.Top)
                 {
-                    speler1.Location = new Point(speler1.Location.X, speler1.Location.Y + offset);
+                    speler1.Location = new Point(speler1.Location.X, speler1.Location.Y + offsetP1);
                     goalgemaakt(0);
                 }
             }
@@ -154,7 +173,7 @@ namespace PONG
             if (message != null && message.MailboxTitle == "up2")
             {
                 if (speler2.Top >= bordertop.Bottom)
-                { speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - offset); }
+                { speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - offsetP2); }
                 goalgemaakt(0);
             }
 
@@ -162,7 +181,7 @@ namespace PONG
             {
                 if (speler2.Bottom <= borderdown.Top)
                 {
-                    speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + offset);
+                    speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + offsetP2);
                     goalgemaakt(0);
                 }
             }
@@ -258,29 +277,56 @@ namespace PONG
             }
         }
 
-        //Het deactiveren van de invisibility power up voor speler 1
+        
 
         private void powerup_Tick(object sender, EventArgs e)
         {
-            if(invis1time >= 1)
+            //De timer voor de invisibility power up van speler 1 en het deactiveren ervan.
+            if (invis1timer >= 1)
             {
-                invis1time++;
-                if (invis1time == 4)
+                invis1timer++;
+                if (invis1timer == 4)
                 {
                     speler1.BackColor = Color.White;
-                    invis1time = 0;
+                    invis1timer = 0;
                 }
             }
 
-            if (invis2time >= 1)
+            //De timer voor de invisibility power up van speler 2 en het deactiveren ervan.
+            if (invis2timer >= 1)
             {
-                invis2time++;
-                if (invis2time == 4)
+                invis2timer++;
+                if (invis2timer == 4)
                 {
                     speler2.BackColor = Color.White;
-                    invis2time = 0;
+                    invis2timer = 0;
                 }
             }
+
+            //De timer voor de swap controls power up van speler 1 en het deactiveren ervan.
+            if (swap1timer >= 1)
+            {
+                swap1timer++;
+                if (swap1timer == 4)
+                {
+                    offsetP1 = 10;
+                    swap1timer = 0;
+                }
+            }
+
+            //De timer voor de swap controls power up van speler 2 en het deactiveren ervan.
+            if (swap2timer >= 1)
+            {
+                swap2timer++;
+                if (swap2timer == 4)
+                {
+                    offsetP2 = 10;
+                    swap2timer = 0;
+                }
+            }
+
+
+
 
         }
     }
