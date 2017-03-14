@@ -206,6 +206,7 @@
             // invisP2
             // 
             this.invisP2.Interval = 3000;
+            this.invisP2.Tick += new System.EventHandler(this.invisP2_Tick);
             // 
             // Pong
             // 

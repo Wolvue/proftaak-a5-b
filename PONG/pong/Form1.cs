@@ -32,11 +32,11 @@ namespace PONG
         Random songselect = new Random();
         Random speedbalgen = new Random();
 
-        System.Media.SoundPlayer backgroundsong1 = new System.Media.SoundPlayer(@"C:\Users\gebruiker\Documents\pong game stuff\whatislove.wav");
-        System.Media.SoundPlayer backgroundsong2 = new System.Media.SoundPlayer(@"C:\Users\gebruiker\Documents\pong game stuff\imagine.wav");
-        System.Media.SoundPlayer backgroundsong3 = new System.Media.SoundPlayer(@"C:\Users\gebruiker\Documents\pong game stuff\undertale.wav");
-        System.Media.SoundPlayer geraakt1 = new System.Media.SoundPlayer(@"C:\Users\gebruiker\Documents\pong game stuff\hit.wav");
-        System.Media.SoundPlayer powerupsound = new System.Media.SoundPlayer(@"C:\Users\gebruiker\Documents\pong game stuff\coin.wav");
+        System.Media.SoundPlayer backgroundsong1 = new System.Media.SoundPlayer(@"wavs\whatislove.wav");
+        System.Media.SoundPlayer backgroundsong2 = new System.Media.SoundPlayer(@"wavs\imagine.wav");
+        System.Media.SoundPlayer backgroundsong3 = new System.Media.SoundPlayer(@"wavs\undertale.wav");
+        System.Media.SoundPlayer geraakt1 = new System.Media.SoundPlayer(@"wavs\hit.wav");
+        System.Media.SoundPlayer powerupsound = new System.Media.SoundPlayer(@"wavs\coin.wav");
 
         public Pong()
         {
@@ -65,6 +65,19 @@ namespace PONG
                 
             }
 
+            //Het activeren van de invisibility power up voor speler 1
+            if (e.KeyChar == '1')
+            {
+                speler1.BackColor = Color.Black;
+                invisP1.Enabled = true;
+            }
+            //Het activeren van de invisibility power up voor speler 2
+            if (e.KeyChar == '2')
+            {
+                speler2.BackColor = Color.Black;
+                invisP2.Enabled = true;
+            }
+
            // if (e.KeyChar == 'i')
            //  {
            //    if (speler2.Top >= bordertop.Bottom)
@@ -82,13 +95,6 @@ namespace PONG
              //   }
             // }
         }
-
-        private void snelheid_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-
 
         private void goalgemaakt(int a)
         {
@@ -153,11 +159,6 @@ namespace PONG
                     goalgemaakt(0);
                 }
             }
-        }
-
-        private void invisP1_Tick(object sender, EventArgs e)
-        {
-
         }
 
         private void snelheid_Tick_1(object sender, EventArgs e)
@@ -248,6 +249,19 @@ namespace PONG
             {
                 speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - 6);
             }
+        }
+
+        //Het deactiveren van de invisibility power up voor speler 1
+        private void invisP1_Tick(object sender, EventArgs e)
+        {
+            speler1.BackColor = Color.White;
+            invisP1.Enabled = false;
+        }
+        //Het deactiveren van de invisibility power up voor speler 2
+        private void invisP2_Tick(object sender, EventArgs e)
+        {
+            speler2.BackColor = Color.White;
+            invisP2.Enabled = false;
         }
     }
 }

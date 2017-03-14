@@ -35,3 +35,4 @@ C:\Users\gebruiker\Documents\ICT\github pt\proftaak-a5-b\PONG\PONG\obj\Debug\PON
 C:\Users\gebruiker\Documents\ICT\github pt\proftaak-a5-b\PONG\PONG\obj\Debug\PONG.Properties.Resources.resources
 C:\Users\gebruiker\Documents\ICT\github pt\proftaak-a5-b\PONG\PONG\obj\Debug\PONG.csproj.GenerateResource.Cache
 >>>>>>> origin/master
+C:\Users\Simon van de Pas\Documents\School\ICT\Periode 1\Proftaak\2\GitHubGoed\proftaak-a5-b\PONG\PONG\obj\Debug\PONG.Form2.resources
