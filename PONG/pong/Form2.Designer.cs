@@ -1,6 +1,6 @@
 ﻿namespace PONG
 {
-    partial class Form2
+    partial class MainMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -41,14 +41,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form2
+            // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(282, 253);
             this.Controls.Add(this.button1);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Name = "MainMenu";
+            this.Text = "Main Menu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
             this.ResumeLayout(false);
 
         }

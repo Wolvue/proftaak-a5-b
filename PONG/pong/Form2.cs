@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace PONG
 {
-    public partial class Form2 : Form
+    public partial class MainMenu : Form
     {
         System.Media.SoundPlayer introsong = new System.Media.SoundPlayer(@"wavs\introsong.wav");
-        public Form2()
+        public MainMenu()
         {
             InitializeComponent();
             introsong.Play();
@@ -21,12 +21,17 @@ namespace PONG
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            
+
+            this.Hide();
             Form Pong = new Pong();
-            Pong.Show();
+            Pong.ShowDialog();
             
             
+        }
+
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

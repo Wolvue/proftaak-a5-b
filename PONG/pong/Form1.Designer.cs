@@ -43,6 +43,8 @@
             this.snelheid = new System.Windows.Forms.Timer(this.components);
             this.spelerev3 = new System.Windows.Forms.Timer(this.components);
             this.powerup = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.speelbord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Bal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goal1)).BeginInit();
@@ -51,6 +53,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.borderdown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speler2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speler1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // speelbord
@@ -60,6 +64,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.speelbord.AutoSize = true;
             this.speelbord.BackColor = System.Drawing.Color.Black;
+            this.speelbord.Controls.Add(this.pictureBox2);
+            this.speelbord.Controls.Add(this.pictureBox1);
             this.speelbord.Controls.Add(this.Bal);
             this.speelbord.Controls.Add(this.goal1);
             this.speelbord.Controls.Add(this.goal2);
@@ -169,9 +175,9 @@
             // 
             this.speler2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.speler2.BackColor = System.Drawing.Color.White;
-            this.speler2.Location = new System.Drawing.Point(642, 174);
+            this.speler2.Location = new System.Drawing.Point(632, 174);
             this.speler2.Name = "speler2";
-            this.speler2.Size = new System.Drawing.Size(25, 100);
+            this.speler2.Size = new System.Drawing.Size(35, 175);
             this.speler2.TabIndex = 1;
             this.speler2.TabStop = false;
             // 
@@ -181,14 +187,14 @@
             this.speler1.BackColor = System.Drawing.Color.White;
             this.speler1.Location = new System.Drawing.Point(16, 174);
             this.speler1.Name = "speler1";
-            this.speler1.Size = new System.Drawing.Size(25, 100);
+            this.speler1.Size = new System.Drawing.Size(35, 175);
             this.speler1.TabIndex = 0;
             this.speler1.TabStop = false;
             // 
             // snelheid
             // 
             this.snelheid.Enabled = true;
-            this.snelheid.Interval = 20;
+            this.snelheid.Interval = 13;
             this.snelheid.Tick += new System.EventHandler(this.snelheid_Tick_1);
             // 
             // spelerev3
@@ -203,6 +209,25 @@
             this.powerup.Interval = 1000;
             this.powerup.Tick += new System.EventHandler(this.powerup_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Location = new System.Drawing.Point(135, 16);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Location = new System.Drawing.Point(461, 16);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox2.TabIndex = 12;
+            this.pictureBox2.TabStop = false;
+            // 
             // Pong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -213,6 +238,8 @@
             this.Name = "Pong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pong";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Pong_FormClosed);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.speelbord.ResumeLayout(false);
             this.speelbord.PerformLayout();
@@ -223,6 +250,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.borderdown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speler2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speler1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,6 +273,8 @@
         private System.Windows.Forms.PictureBox Bal;
         private System.Windows.Forms.Timer spelerev3;
         private System.Windows.Forms.Timer powerup;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
