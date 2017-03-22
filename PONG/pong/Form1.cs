@@ -44,6 +44,9 @@ namespace PONG
         // double point dmg
         int hadouken;
 
+        // winner
+        int winner;
+
         private EV3Messenger ev3Messenger;
 
 
@@ -61,7 +64,8 @@ namespace PONG
             InitializeComponent();
             ev3Messenger = new EV3Messenger();
             jukebox();
-            ev3Messenger.Connect("COM4");
+            ev3Messenger.Connect("COM3");
+            winner = 0;
         }
 
         //Het bewegen van speler 1
@@ -86,22 +90,24 @@ namespace PONG
             //Het activeren van de invisibility power up voor speler 1
             if (e.KeyChar == '1')
             {
-                speler1.BackColor = Color.Black;
-                invis1timer = 1;
+                powerup1 = 1;
+                //speler1.BackColor = Color.Black;
+                //invis1timer = 1;
             }
             //Het activeren van de invisibility power up voor speler 2
             if (e.KeyChar == '2')
             {
-                speler2.BackColor = Color.Black;
-                invis2timer = 1;
+                //speler2.BackColor = Color.Black;
+               // invis2timer = 1;
             }
 
             //Swap Controls
             //Het activeren van de swap power up voor speler 1
             if (e.KeyChar == '3')
             {
-                offsetP1 = -10;
-                swap1timer = 1;
+                powerup1 = 2;
+                //offsetP1 = -10;
+                //swap1timer = 1;
             }
             //Het activeren van de swap power uup voor speler 2
             /*if (e.KeyChar == '4')
@@ -112,18 +118,21 @@ namespace PONG
 
             if (e.KeyChar == '5')
             {
-                speedshotp1 = 1;
+                powerup1 = 3;
+                //speedshotp1 = 1;
             }
 
             if (e.KeyChar == '6')
             {
-                speedshotp2 = 1;
+                //speedshotp2 = 1;
             }
             
             if (e.KeyChar == '7')
             {
-                hadouken = 1;
-                Bal.BackColor = Color.DodgerBlue;
+                
+                powerup1 = 4;
+               // hadouken = 1;
+                // Bal.BackColor = Color.DodgerBlue;
             }
 
 
@@ -150,7 +159,7 @@ namespace PONG
 
         private void goalgemaakt(int a)
         {
-            if (a == 0)
+            if (a == 0 )
             {
                 snelheid.Enabled = true;
             }
@@ -182,43 +191,48 @@ namespace PONG
             
 
 
-
-            EV3Message message = ev3Messenger.ReadMessage();
-            if (message != null && message.MailboxTitle == "up")
-            {
-                if (speler1.Top >= bordertop.Bottom)
-                { speler1.Location = new Point(speler1.Location.X, speler1.Location.Y - offsetP1); }
-                goalgemaakt(0);
-            }
-
-             
-
-
-
-
-            else if (message != null && message.MailboxTitle == "down")
-            {
-                if (speler1.Bottom <= borderdown.Top)
+                EV3Message message = ev3Messenger.ReadMessage();
+        if (winner != 1)
+           {
+                if (message != null && message.MailboxTitle == "up")
                 {
-                    speler1.Location = new Point(speler1.Location.X, speler1.Location.Y + offsetP1);
+                    if (speler1.Top >= bordertop.Bottom)
+                    { speler1.Location = new Point(speler1.Location.X, speler1.Location.Y - offsetP1); }
+                    if (puntenspeler1 < 10 && puntenspeler2 < 10)
+                        goalgemaakt(0);
+                }
+
+                else if (message != null && message.MailboxTitle == "down")
+                {
+                    if (speler1.Bottom <= borderdown.Top)
+                    {
+                        speler1.Location = new Point(speler1.Location.X, speler1.Location.Y + offsetP1);
+                        if (puntenspeler1 < 10 && puntenspeler2 < 10)
+                            goalgemaakt(0);
+                    }
+                }
+
+                if (message != null && message.MailboxTitle == "up2")
+                {
+                    if (speler2.Top >= bordertop.Bottom)
+                    { speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - offsetP2); }
                     goalgemaakt(0);
                 }
-            }
 
-            if (message != null && message.MailboxTitle == "up2")
-            {
-                if (speler2.Top >= bordertop.Bottom)
-                { speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - offsetP2); }
-                goalgemaakt(0);
-            }
-
-            else if (message != null && message.MailboxTitle == "down2")
-            {
-                if (speler2.Bottom <= borderdown.Top)
+                else if (message != null && message.MailboxTitle == "down2")
                 {
-                    speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + offsetP2);
-                    goalgemaakt(0);
+                    if (speler2.Bottom <= borderdown.Top)
+                    {
+                        speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + offsetP2);
+                        goalgemaakt(0);
+                    }
                 }
+
+            }
+
+            if (winner == 1 && (message != null && message.MailboxTitle == "activatep1"))
+            {
+                this.Close();
             }
 
             if (message != null && message.MailboxTitle == "powerupp1")
@@ -227,18 +241,22 @@ namespace PONG
                 if (message.ValueAsNumber == 1)
                 {
                     powerup1 = 1;
+                    pu1p1.Visible = true;
                 }
                 if (message.ValueAsNumber == 2)
                 {
                     powerup1 = 2;
+                    pu2p1.Visible = true;
                 }
                 if (message.ValueAsNumber == 3)
                 {
                     powerup1 = 3;
+                    pu3p1.Visible = true;
                 }
                 if (message.ValueAsNumber == 4)
                 {
                     powerup1 = 4;
+                    pu4p1.Visible = true;
                 }
             }
             // slaat powerup op in c# p2
@@ -279,13 +297,21 @@ namespace PONG
                 if (powerup1 == 3)
                 {
                     speedshotp1 = 1;
+                    
                 }
                 // double damage
                 if (powerup1 == 4)
                 {
                     hadouken = 1;
                     Bal.BackColor = Color.DodgerBlue;
+                    ev3Messenger.SendMessage("Hadouken", "Hadouken");
                 }
+                powerup1 = 0;
+                pu1p1.Visible = false;
+                pu2p1.Visible = false;
+                pu3p1.Visible = false;
+                pu4p1.Visible = false;
+
             }
             if (message != null && message.MailboxTitle == "activatep2")
             {
@@ -305,12 +331,14 @@ namespace PONG
                 if (powerup2 == 3)
                 {
                     speedshotp2 = 1;
+
                 }
                 // double points
                 if (powerup2 == 4)
                 {
                     hadouken = 1;
                     Bal.BackColor = Color.DodgerBlue;
+                    
                 }
             }
         }
@@ -345,15 +373,27 @@ namespace PONG
                 speedupX2 += rspeed2;
                 speedupY1 -= rspeed1;
                 speedupY2 += rspeed2;
+// effect
+         //       if ((Bal.Top + Bal.Bottom) / 2 <= (speler2.Top + speler2.Bottom) / 2)
+          //      {
+
+          //          balpos2 = Convert.ToInt32(speedupY2);
+          //      }
+           //     else
+           //     {
+            //        balpos2 = Convert.ToInt32(speedupY1);
+           //     }
                 balpos1 = Convert.ToInt32(speedupX1);
-                ev3Messenger.SendMessage("hit", "scream");
+                
 
                 // speedshots
                 if (speedshotp1 == 1)
                 {
+                    
                     speedupX1 *= 2;
                     speedupX2 *= 2;
                     speedshotp1 = 2;
+                    speler1.BackColor = Color.Gold;
                 }
                 if (speedshotp2 == 2)
                 {
@@ -361,13 +401,11 @@ namespace PONG
                     speedupX1 /= 2;
                     speedupX2 /= 2;
                     speedshotp2 = 0;
+                    
 
                 }
 
-                if (hadouken == 1)
-                {
 
-                }
             }
 
             // bal raakt speler
@@ -387,10 +425,21 @@ namespace PONG
                 speedupX2 += rspeed2;
                 speedupY1 -= rspeed1;
                 speedupY2 += rspeed2;
+
+                if ((Bal.Top + Bal.Bottom) / 2 <= (speler1.Top + speler1.Bottom) / 2)
+                {
+                    
+                    balpos2 = Convert.ToInt32(speedupY2);
+                }
+                else
+                {
+                    balpos2 = Convert.ToInt32(speedupY1);
+                }
                 balpos1 = Convert.ToInt32(speedupX2);
-                ev3Messenger.SendMessage("hit", "scream");
+                
                 if (speedshotp2 == 1)
                 {
+                    speler2.BackColor = Color.LightYellow;
                     speedupX1 *= 2;
                     speedupX2 *= 2;
                     speedshotp2 = 2;
@@ -400,6 +449,7 @@ namespace PONG
                     speedupX1 /= 2;
                     speedupX2 /= 2;
                     speedshotp1 = 0;
+                    speler1.BackColor = Color.White;
                 }
 
             }
@@ -427,10 +477,21 @@ namespace PONG
 
                 //  Snelheid.Interval = 20;
                 //spelerev3.Interval = 20;
-                goalgemaakt(1);
+                
                 //    ev3Messenger.SendMessage("boo", "scream");
                 speedshotp1 = 0;
                 speedshotp2 = 0;
+
+                if (puntenspeler2 >= 10)
+                {
+                    snelheid.Enabled = false;
+                    winnerp2.Visible = true;
+                    winner = 1;
+                }
+                else
+                {
+                    goalgemaakt(1);
+                }
 
             }
             // goal gemaakt door 1
@@ -454,10 +515,22 @@ namespace PONG
                 speedupY2 = 5;
                 //spelerev3.Interval = 20;
                 //Snelheid.Interval = 20;
-                goalgemaakt(1);
+               
                 //    ev3Messenger.SendMessage("yay", "scream");
                 speedshotp1 = 0;
                 speedshotp2 = 0;
+
+                if (puntenspeler1 >= 10)
+                {
+                    snelheid.Enabled = false;
+                    winnerp1.Visible = true;
+                    winner = 1;
+                }
+                else
+                {
+                goalgemaakt(1);
+                }
+
             }
             // bot
             if ((speler2.Top + speler2.Bottom) / 2 <= (Bal.Top + Bal.Bottom) / 2)
