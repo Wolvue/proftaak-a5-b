@@ -64,7 +64,7 @@ namespace PONG
             InitializeComponent();
             ev3Messenger = new EV3Messenger();
             jukebox();
-            ev3Messenger.Connect("COM3");
+            ev3Messenger.Connect("COM4");
             winner = 0;
         }
 

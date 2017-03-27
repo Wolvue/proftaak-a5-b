@@ -182,7 +182,7 @@
             // 
             this.pu4p1.BackColor = System.Drawing.Color.Transparent;
             this.pu4p1.BackgroundImage = global::PONG.Properties.Resources.hadouken;
-            this.pu4p1.Location = new System.Drawing.Point(135, 16);
+            this.pu4p1.Location = new System.Drawing.Point(406, 213);
             this.pu4p1.Name = "pu4p1";
             this.pu4p1.Size = new System.Drawing.Size(75, 75);
             this.pu4p1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -194,7 +194,7 @@
             // 
             this.pu3p1.BackColor = System.Drawing.Color.Transparent;
             this.pu3p1.BackgroundImage = global::PONG.Properties.Resources.speed;
-            this.pu3p1.Location = new System.Drawing.Point(135, 16);
+            this.pu3p1.Location = new System.Drawing.Point(325, 213);
             this.pu3p1.Name = "pu3p1";
             this.pu3p1.Size = new System.Drawing.Size(75, 75);
             this.pu3p1.TabIndex = 17;
@@ -205,7 +205,7 @@
             // 
             this.pu2p1.BackColor = System.Drawing.Color.Transparent;
             this.pu2p1.BackgroundImage = global::PONG.Properties.Resources.swap;
-            this.pu2p1.Location = new System.Drawing.Point(135, 16);
+            this.pu2p1.Location = new System.Drawing.Point(238, 213);
             this.pu2p1.Name = "pu2p1";
             this.pu2p1.Size = new System.Drawing.Size(75, 75);
             this.pu2p1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -236,7 +236,7 @@
             // 
             this.pu1p1.BackColor = System.Drawing.Color.Transparent;
             this.pu1p1.BackgroundImage = global::PONG.Properties.Resources.invisibility_2;
-            this.pu1p1.Location = new System.Drawing.Point(135, 16);
+            this.pu1p1.Location = new System.Drawing.Point(157, 213);
             this.pu1p1.Name = "pu1p1";
             this.pu1p1.Size = new System.Drawing.Size(75, 75);
             this.pu1p1.TabIndex = 11;
