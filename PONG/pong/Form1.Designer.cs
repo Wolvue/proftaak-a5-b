@@ -30,26 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             this.speelbord = new System.Windows.Forms.Panel();
-            this.winnerp2 = new System.Windows.Forms.Label();
-            this.winnerp1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.punten2 = new System.Windows.Forms.Label();
-            this.punten1 = new System.Windows.Forms.Label();
-            this.snelheid = new System.Windows.Forms.Timer(this.components);
-            this.spelerev3 = new System.Windows.Forms.Timer(this.components);
-            this.powerup = new System.Windows.Forms.Timer(this.components);
             this.pu4p1 = new System.Windows.Forms.PictureBox();
             this.pu3p1 = new System.Windows.Forms.PictureBox();
             this.pu2p1 = new System.Windows.Forms.PictureBox();
             this.Bal = new System.Windows.Forms.PictureBox();
+            this.winnerp2 = new System.Windows.Forms.Label();
+            this.winnerp1 = new System.Windows.Forms.Label();
             this.pup2 = new System.Windows.Forms.PictureBox();
             this.pu1p1 = new System.Windows.Forms.PictureBox();
             this.goal1 = new System.Windows.Forms.PictureBox();
             this.goal2 = new System.Windows.Forms.PictureBox();
             this.bordertop = new System.Windows.Forms.PictureBox();
             this.borderdown = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.punten2 = new System.Windows.Forms.Label();
+            this.punten1 = new System.Windows.Forms.Label();
             this.speler2 = new System.Windows.Forms.PictureBox();
             this.speler1 = new System.Windows.Forms.PictureBox();
+            this.snelheid = new System.Windows.Forms.Timer(this.components);
+            this.spelerev3 = new System.Windows.Forms.Timer(this.components);
+            this.powerup = new System.Windows.Forms.Timer(this.components);
             this.speelbord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pu4p1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pu3p1)).BeginInit();
@@ -94,90 +94,6 @@
             this.speelbord.Size = new System.Drawing.Size(705, 468);
             this.speelbord.TabIndex = 0;
             // 
-            // winnerp2
-            // 
-            this.winnerp2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.winnerp2.AutoSize = true;
-            this.winnerp2.BackColor = System.Drawing.Color.Transparent;
-            this.winnerp2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.winnerp2.ForeColor = System.Drawing.Color.White;
-            this.winnerp2.Location = new System.Drawing.Point(456, 126);
-            this.winnerp2.Name = "winnerp2";
-            this.winnerp2.Size = new System.Drawing.Size(102, 26);
-            this.winnerp2.TabIndex = 14;
-            this.winnerp2.Text = "WINNER";
-            this.winnerp2.Visible = false;
-            // 
-            // winnerp1
-            // 
-            this.winnerp1.AutoSize = true;
-            this.winnerp1.BackColor = System.Drawing.Color.Transparent;
-            this.winnerp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.winnerp1.ForeColor = System.Drawing.Color.White;
-            this.winnerp1.Location = new System.Drawing.Point(108, 126);
-            this.winnerp1.Name = "winnerp1";
-            this.winnerp1.Size = new System.Drawing.Size(102, 26);
-            this.winnerp1.TabIndex = 13;
-            this.winnerp1.Text = "WINNER";
-            this.winnerp1.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("ModeSeven", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(311, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 43);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "-";
-            // 
-            // punten2
-            // 
-            this.punten2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.punten2.AutoSize = true;
-            this.punten2.BackColor = System.Drawing.Color.Transparent;
-            this.punten2.Font = new System.Drawing.Font("ModeSeven", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.punten2.ForeColor = System.Drawing.Color.White;
-            this.punten2.Location = new System.Drawing.Point(398, 9);
-            this.punten2.Name = "punten2";
-            this.punten2.Size = new System.Drawing.Size(46, 43);
-            this.punten2.TabIndex = 4;
-            this.punten2.Text = "0";
-            // 
-            // punten1
-            // 
-            this.punten1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.punten1.AutoSize = true;
-            this.punten1.BackColor = System.Drawing.Color.Transparent;
-            this.punten1.Font = new System.Drawing.Font("ModeSeven", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.punten1.ForeColor = System.Drawing.Color.White;
-            this.punten1.Location = new System.Drawing.Point(230, 9);
-            this.punten1.Name = "punten1";
-            this.punten1.Size = new System.Drawing.Size(46, 43);
-            this.punten1.TabIndex = 2;
-            this.punten1.Text = "0";
-            // 
-            // snelheid
-            // 
-            this.snelheid.Enabled = true;
-            this.snelheid.Interval = 13;
-            this.snelheid.Tick += new System.EventHandler(this.snelheid_Tick_1);
-            // 
-            // spelerev3
-            // 
-            this.spelerev3.Enabled = true;
-            this.spelerev3.Interval = 20;
-            this.spelerev3.Tick += new System.EventHandler(this.spelerev3_Tick);
-            // 
-            // powerup
-            // 
-            this.powerup.Enabled = true;
-            this.powerup.Interval = 1000;
-            this.powerup.Tick += new System.EventHandler(this.powerup_Tick);
-            // 
             // pu4p1
             // 
             this.pu4p1.BackColor = System.Drawing.Color.Transparent;
@@ -221,6 +137,33 @@
             this.Bal.Size = new System.Drawing.Size(21, 21);
             this.Bal.TabIndex = 15;
             this.Bal.TabStop = false;
+            // 
+            // winnerp2
+            // 
+            this.winnerp2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.winnerp2.AutoSize = true;
+            this.winnerp2.BackColor = System.Drawing.Color.Transparent;
+            this.winnerp2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.winnerp2.ForeColor = System.Drawing.Color.White;
+            this.winnerp2.Location = new System.Drawing.Point(456, 126);
+            this.winnerp2.Name = "winnerp2";
+            this.winnerp2.Size = new System.Drawing.Size(102, 26);
+            this.winnerp2.TabIndex = 14;
+            this.winnerp2.Text = "WINNER";
+            this.winnerp2.Visible = false;
+            // 
+            // winnerp1
+            // 
+            this.winnerp1.AutoSize = true;
+            this.winnerp1.BackColor = System.Drawing.Color.Transparent;
+            this.winnerp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.winnerp1.ForeColor = System.Drawing.Color.White;
+            this.winnerp1.Location = new System.Drawing.Point(108, 126);
+            this.winnerp1.Name = "winnerp1";
+            this.winnerp1.Size = new System.Drawing.Size(102, 26);
+            this.winnerp1.TabIndex = 13;
+            this.winnerp1.Text = "WINNER";
+            this.winnerp1.Visible = false;
             // 
             // pup2
             // 
@@ -285,6 +228,45 @@
             this.borderdown.TabIndex = 6;
             this.borderdown.TabStop = false;
             // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("ModeSeven", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(311, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 43);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "-";
+            // 
+            // punten2
+            // 
+            this.punten2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.punten2.AutoSize = true;
+            this.punten2.BackColor = System.Drawing.Color.Transparent;
+            this.punten2.Font = new System.Drawing.Font("ModeSeven", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.punten2.ForeColor = System.Drawing.Color.White;
+            this.punten2.Location = new System.Drawing.Point(398, 9);
+            this.punten2.Name = "punten2";
+            this.punten2.Size = new System.Drawing.Size(46, 43);
+            this.punten2.TabIndex = 4;
+            this.punten2.Text = "0";
+            // 
+            // punten1
+            // 
+            this.punten1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.punten1.AutoSize = true;
+            this.punten1.BackColor = System.Drawing.Color.Transparent;
+            this.punten1.Font = new System.Drawing.Font("ModeSeven", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.punten1.ForeColor = System.Drawing.Color.White;
+            this.punten1.Location = new System.Drawing.Point(230, 9);
+            this.punten1.Name = "punten1";
+            this.punten1.Size = new System.Drawing.Size(46, 43);
+            this.punten1.TabIndex = 2;
+            this.punten1.Text = "0";
+            // 
             // speler2
             // 
             this.speler2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -305,6 +287,24 @@
             this.speler1.TabIndex = 0;
             this.speler1.TabStop = false;
             // 
+            // snelheid
+            // 
+            this.snelheid.Enabled = true;
+            this.snelheid.Interval = 13;
+            this.snelheid.Tick += new System.EventHandler(this.snelheid_Tick_1);
+            // 
+            // spelerev3
+            // 
+            this.spelerev3.Enabled = true;
+            this.spelerev3.Interval = 20;
+            this.spelerev3.Tick += new System.EventHandler(this.spelerev3_Tick);
+            // 
+            // powerup
+            // 
+            this.powerup.Enabled = true;
+            this.powerup.Interval = 1000;
+            this.powerup.Tick += new System.EventHandler(this.powerup_Tick);
+            // 
             // Pong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -312,6 +312,7 @@
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(682, 428);
             this.Controls.Add(this.speelbord);
+            this.DoubleBuffered = true;
             this.Name = "Pong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pong";
