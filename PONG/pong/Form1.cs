@@ -15,6 +15,8 @@ namespace PONG
 {
     public partial class Pong : Form
     {
+        int gamemodep; 
+
         int balpos1 = 5;
         int balpos2 = 5;
 
@@ -47,7 +49,8 @@ namespace PONG
         // winner
         int winner;
 
-        private EV3Messenger ev3Messenger;
+        private EV3Messenger ev3Messenger1;
+        private EV3Messenger ev3Messenger2;
 
 
         Random songselect = new Random();
@@ -62,10 +65,13 @@ namespace PONG
         public Pong()
         {
             InitializeComponent();
-            ev3Messenger = new EV3Messenger();
+            ev3Messenger1 = new EV3Messenger();
+            ev3Messenger2 = new EV3Messenger();
             jukebox();
-            ev3Messenger.Connect("COM4");
+            ev3Messenger1.Connect("COM4");
+            ev3Messenger2.Connect("COM4");
             winner = 0;
+            gamemodep = MainMenu.gamemode;
         }
 
         //Het bewegen van speler 1
@@ -191,10 +197,11 @@ namespace PONG
             
 
 
-                EV3Message message = ev3Messenger.ReadMessage();
+                EV3Message messagep1 = ev3Messenger1.ReadMessage();
+                EV3Message messagep2 = ev3Messenger2.ReadMessage();
         if (winner != 1)
            {
-                if (message != null && message.MailboxTitle == "up")
+                if (messagep1 != null && messagep1.MailboxTitle == "up")
                 {
                     if (speler1.Top >= bordertop.Bottom)
                     { speler1.Location = new Point(speler1.Location.X, speler1.Location.Y - offsetP1); }
@@ -202,7 +209,7 @@ namespace PONG
                         goalgemaakt(0);
                 }
 
-                else if (message != null && message.MailboxTitle == "down")
+                else if (messagep1 != null && messagep1.MailboxTitle == "down")
                 {
                     if (speler1.Bottom <= borderdown.Top)
                     {
@@ -212,14 +219,14 @@ namespace PONG
                     }
                 }
 
-                if (message != null && message.MailboxTitle == "up2")
+                if (messagep2 != null && messagep2.MailboxTitle == "up")
                 {
                     if (speler2.Top >= bordertop.Bottom)
                     { speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - offsetP2); }
                     goalgemaakt(0);
                 }
 
-                else if (message != null && message.MailboxTitle == "down2")
+                else if (messagep2 != null && messagep2.MailboxTitle == "down")
                 {
                     if (speler2.Bottom <= borderdown.Top)
                     {
@@ -230,56 +237,56 @@ namespace PONG
 
             }
 
-            if (winner == 1 && (message != null && message.MailboxTitle == "activatep1"))
+            if (winner == 1 && (messagep1 != null && messagep1.MailboxTitle == "activatep1"))
             {
                 this.Close();
             }
 
-            if (message != null && message.MailboxTitle == "powerupp1")
+            if (messagep1 != null && messagep1.MailboxTitle == "powerupp1")
             {
                 // gedetecteerde powerup p1
-                if (message.ValueAsNumber == 1)
+                if (messagep1.ValueAsNumber == 1)
                 {
                     powerup1 = 1;
                     pu1p1.Visible = true;
                 }
-                if (message.ValueAsNumber == 2)
+                if (messagep1.ValueAsNumber == 2)
                 {
                     powerup1 = 2;
                     pu2p1.Visible = true;
                 }
-                if (message.ValueAsNumber == 3)
+                if (messagep1.ValueAsNumber == 3)
                 {
                     powerup1 = 3;
                     pu3p1.Visible = true;
                 }
-                if (message.ValueAsNumber == 4)
+                if (messagep1.ValueAsNumber == 4)
                 {
                     powerup1 = 4;
                     pu4p1.Visible = true;
                 }
             }
             // slaat powerup op in c# p2
-            if (message != null && message.MailboxTitle == "powerupp2")
+            if (messagep2 != null && messagep2.MailboxTitle == "powerupp2")
             {
-                if (message.ValueAsNumber == 1)
+                if (messagep2.ValueAsNumber == 1)
                 {
                     powerup2 = 1;
                 }
-                if (message.ValueAsNumber == 2)
+                if (messagep2.ValueAsNumber == 2)
                 {
                     powerup2 = 2;
                 }
-                if (message.ValueAsNumber == 3)
+                if (messagep2.ValueAsNumber == 3)
                 {
                     powerup2 = 3;
                 }
-                if (message.ValueAsNumber == 4)
+                if (messagep2.ValueAsNumber == 4)
                 {
                     powerup2 = 4;
                 }
             }
-            if (message != null && message.MailboxTitle == "activatep1")
+            if (messagep1 != null && messagep1.MailboxTitle == "activatep1")
             {
                 // invisibility
                 if (powerup1 == 1)
@@ -304,7 +311,7 @@ namespace PONG
                 {
                     hadouken = 1;
                     Bal.BackColor = Color.DodgerBlue;
-                    ev3Messenger.SendMessage("Hadouken", "Hadouken");
+                    ev3Messenger1.SendMessage("Hadouken", "Hadouken");
                 }
                 powerup1 = 0;
                 pu1p1.Visible = false;
@@ -313,18 +320,18 @@ namespace PONG
                 pu4p1.Visible = false;
 
             }
-            if (message != null && message.MailboxTitle == "activatep2")
+            if (messagep2 != null && messagep2.MailboxTitle == "activatep2")
             {
                 // invisibility
                 if (powerup2 == 1)
                 {
-                    speler1.BackColor = Color.Black;
+                    speler2.BackColor = Color.Black;
                     invis2timer = 1;
                 }
                 // swap controls
                 if (powerup2 == 2)
                 {
-                    offsetP1 = -10;
+                    offsetP2 = -10;
                     swap2timer = 1;
                 }
                 // speedshot
@@ -338,8 +345,13 @@ namespace PONG
                 {
                     hadouken = 1;
                     Bal.BackColor = Color.DodgerBlue;
-                    
+                    ev3Messenger1.SendMessage("Hadouken", "Hadouken");
                 }
+                powerup2 = 0;
+                pu1p1.Visible = false;
+                pu2p1.Visible = false;
+                pu3p1.Visible = false;
+                pu4p1.Visible = false;
             }
         }
 
@@ -533,6 +545,8 @@ namespace PONG
 
             }
             // bot
+            if (gamemodep == 1)
+            {
             if ((speler2.Top + speler2.Bottom) / 2 <= (Bal.Top + Bal.Bottom) / 2)
             {
                 speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + 6);
@@ -542,6 +556,8 @@ namespace PONG
             {
                 speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - 6);
             }
+            }
+
         }
 
 
@@ -604,8 +620,6 @@ namespace PONG
         }
 
 
-
-
-        }
+    }
 
 }

@@ -13,25 +13,28 @@ namespace PONG
     public partial class MainMenu : Form
     {
         System.Media.SoundPlayer introsong = new System.Media.SoundPlayer(@"wavs\introsong.wav");
+
+        public static int gamemode;
         public MainMenu()
         {
             InitializeComponent();
             introsong.Play();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Singleplayer_start_Click(object sender, EventArgs e)
         {
 
             this.Hide();
             Form Pong = new Pong();
             Pong.ShowDialog();
-            
-            
-        }
-
-        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
+            gamemode = 1;
         }
     }
 }
