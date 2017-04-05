@@ -15,6 +15,15 @@ namespace PONG
         System.Media.SoundPlayer introsong = new System.Media.SoundPlayer(@"wavs\introsong.wav");
 
         public static int gamemode;
+
+        double movementX1 = -5;
+        double movementX2 = 5;
+        double movementY1 = -5;
+        double movementY2 = 5;
+
+        int balpos1 = 5;
+        int balpos2 = -5;
+
         public MainMenu()
         {
             InitializeComponent();
@@ -30,19 +39,69 @@ namespace PONG
 
         private void Singleplayer_start_Click(object sender, EventArgs e)
         {
-
+            gamemode = 1;
             this.Hide();
             Form Pong = new Pong();
             Pong.ShowDialog();
-            gamemode = 1;
+            
         }
 
         private void Multiplayer_start_Click(object sender, EventArgs e)
         {
+            gamemode = 2;
             this.Hide();
             Form Pong = new Pong();
             Pong.ShowDialog();
-            gamemode = 2;
+            
+        }
+
+        private void balmovement_Tick(object sender, EventArgs e)
+        {
+            if ((bot1.Top + bot1.Bottom) / 2 <= (Bal.Top + Bal.Bottom) / 2)
+            {
+                bot1.Location = new Point(bot1.Location.X, bot1.Location.Y + 6);
+            }
+
+            if ((bot1.Top + bot1.Bottom) / 2 >= (Bal.Top + Bal.Bottom) / 2)
+            {
+                bot1.Location = new Point(bot1.Location.X, bot1.Location.Y - 6);
+            }
+            //
+            if ((bot2.Top + bot2.Bottom) / 2 <= (Bal.Top + Bal.Bottom) / 2)
+            {
+                bot2.Location = new Point(bot2.Location.X, bot2.Location.Y + 4);
+            }
+
+            if ((bot2.Top + bot2.Bottom) / 2 >= (Bal.Top + Bal.Bottom) / 2)
+            {
+                bot2.Location = new Point(bot2.Location.X, bot2.Location.Y - 4);
+            }
+
+            Bal.Location = new Point(Bal.Location.X + balpos1, Bal.Location.Y + balpos2);
+
+
+            if (Bal.Bottom >= Borderbottom.Top)
+            {
+                balpos2 = Convert.ToInt32(movementY1);
+            }
+
+            if (Bal.Top <= Bordertop.Bottom)
+            {
+                balpos2 = Convert.ToInt32(movementY2);
+            }
+
+            if ((Bal.Top + Bal.Bottom) / 2 <= (bot2.Top + bot2.Bottom) / 2)
+            {
+
+                balpos2 = Convert.ToInt32(movementY2);
+            }
+            else
+            {
+                balpos2 = Convert.ToInt32(movementY1);
+            }
+            balpos1 = Convert.ToInt32(movementX2);
+
         }
     }
+    
 }

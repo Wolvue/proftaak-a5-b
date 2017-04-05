@@ -218,23 +218,26 @@ namespace PONG
                             goalgemaakt(0);
                     }
                 }
-
-                if (messagep2 != null && messagep2.MailboxTitle == "up")
+                if (gamemodep == 2)
                 {
-                    if (speler2.Top >= bordertop.Bottom)
-                    { speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - offsetP2); }
-                    goalgemaakt(0);
-                }
 
-                else if (messagep2 != null && messagep2.MailboxTitle == "down")
-                {
-                    if (speler2.Bottom <= borderdown.Top)
+
+                    if (messagep2 != null && messagep2.MailboxTitle == "up2")
                     {
-                        speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + offsetP2);
+                        if (speler2.Top >= bordertop.Bottom)
+                        { speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - offsetP2); }
                         goalgemaakt(0);
                     }
-                }
 
+                    else if (messagep2 != null && messagep2.MailboxTitle == "down2")
+                    {
+                        if (speler2.Bottom <= borderdown.Top)
+                        {
+                            speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + offsetP2);
+                            goalgemaakt(0);
+                        }
+                    }
+                }
             }
 
             if (winner == 1 && (messagep1 != null && messagep1.MailboxTitle == "activatep1"))
@@ -286,6 +289,9 @@ namespace PONG
                     powerup2 = 4;
                 }
             }
+            
+
+            
             if (messagep1 != null && messagep1.MailboxTitle == "activatep1")
             {
                 // invisibility
@@ -320,38 +326,43 @@ namespace PONG
                 pu4p1.Visible = false;
 
             }
-            if (messagep2 != null && messagep2.MailboxTitle == "activatep2")
+            if (gamemodep == 2)
             {
-                // invisibility
-                if (powerup2 == 1)
-                {
-                    speler2.BackColor = Color.Black;
-                    invis2timer = 1;
-                }
-                // swap controls
-                if (powerup2 == 2)
-                {
-                    offsetP2 = -10;
-                    swap2timer = 1;
-                }
-                // speedshot
-                if (powerup2 == 3)
-                {
-                    speedshotp2 = 1;
 
-                }
-                // double points
-                if (powerup2 == 4)
+
+                if (messagep2 != null && messagep2.MailboxTitle == "activatep2")
                 {
-                    hadouken = 1;
-                    Bal.BackColor = Color.DodgerBlue;
-                    ev3Messenger1.SendMessage("Hadouken", "Hadouken");
+                    // invisibility
+                    if (powerup2 == 1)
+                    {
+                        speler2.BackColor = Color.Black;
+                        invis2timer = 1;
+                    }
+                    // swap controls
+                    if (powerup2 == 2)
+                    {
+                        offsetP2 = -10;
+                        swap2timer = 1;
+                    }
+                    // speedshot
+                    if (powerup2 == 3)
+                    {
+                        speedshotp2 = 1;
+
+                    }
+                    // double points
+                    if (powerup2 == 4)
+                    {
+                        hadouken = 1;
+                        Bal.BackColor = Color.DodgerBlue;
+                        ev3Messenger1.SendMessage("Hadouken", "Hadouken");
+                    }
+                    powerup2 = 0;
+                    pu1p1.Visible = false;
+                    pu2p1.Visible = false;
+                    pu3p1.Visible = false;
+                    pu4p1.Visible = false;
                 }
-                powerup2 = 0;
-                pu1p1.Visible = false;
-                pu2p1.Visible = false;
-                pu3p1.Visible = false;
-                pu4p1.Visible = false;
             }
         }
 
