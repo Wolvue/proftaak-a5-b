@@ -36,5 +36,13 @@ namespace PONG
             Pong.ShowDialog();
             gamemode = 1;
         }
+
+        private void Multiplayer_start_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form Pong = new Pong();
+            Pong.ShowDialog();
+            gamemode = 2;
+        }
     }
 }

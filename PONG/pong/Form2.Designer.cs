@@ -35,6 +35,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.balmovement = new System.Windows.Forms.Timer(this.components);
+            this.Multiplayer_start = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -47,6 +48,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.Multiplayer_start);
             this.panel1.Controls.Add(this.Singleplayer_start);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -75,7 +77,7 @@
             // 
             this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox3.BackColor = System.Drawing.Color.White;
-            this.pictureBox3.Location = new System.Drawing.Point(310, 68);
+            this.pictureBox3.Location = new System.Drawing.Point(330, 48);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(25, 25);
             this.pictureBox3.TabIndex = 5;
@@ -87,7 +89,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Location = new System.Drawing.Point(239, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(250, 30);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
@@ -95,11 +97,26 @@
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.Location = new System.Drawing.Point(239, 690);
+            this.pictureBox2.Location = new System.Drawing.Point(239, 710);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(200, 50);
+            this.pictureBox2.Size = new System.Drawing.Size(250, 30);
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
+            // 
+            // Multiplayer_start
+            // 
+            this.Multiplayer_start.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Multiplayer_start.AutoSize = true;
+            this.Multiplayer_start.BackColor = System.Drawing.Color.Black;
+            this.Multiplayer_start.Font = new System.Drawing.Font("ModeSeven", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Multiplayer_start.ForeColor = System.Drawing.Color.Red;
+            this.Multiplayer_start.Location = new System.Drawing.Point(135, 238);
+            this.Multiplayer_start.Name = "Multiplayer_start";
+            this.Multiplayer_start.Size = new System.Drawing.Size(414, 66);
+            this.Multiplayer_start.TabIndex = 7;
+            this.Multiplayer_start.Text = "Multiplayer";
+            this.Multiplayer_start.UseVisualStyleBackColor = false;
+            this.Multiplayer_start.Click += new System.EventHandler(this.Multiplayer_start_Click);
             // 
             // MainMenu
             // 
@@ -127,5 +144,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Timer balmovement;
+        private System.Windows.Forms.Button Multiplayer_start;
     }
 }
