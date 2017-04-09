@@ -80,26 +80,7 @@ namespace PONG
             Bal.Location = new Point(Bal.Location.X + balpos1, Bal.Location.Y + balpos2);
 
 
-            if (Bal.Bottom >= Borderbottom.Top)
-            {
-                balpos2 = Convert.ToInt32(movementY1);
-            }
 
-            if (Bal.Top <= Bordertop.Bottom)
-            {
-                balpos2 = Convert.ToInt32(movementY2);
-            }
-
-            if ((Bal.Top + Bal.Bottom) / 2 <= (bot2.Top + bot2.Bottom) / 2)
-            {
-
-                balpos2 = Convert.ToInt32(movementY2);
-            }
-            else
-            {
-                balpos2 = Convert.ToInt32(movementY1);
-            }
-            balpos1 = Convert.ToInt32(movementX2);
 
         }
     }
