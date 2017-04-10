@@ -43,7 +43,6 @@
             this.bot1 = new System.Windows.Forms.PictureBox();
             this.balmovement = new System.Windows.Forms.Timer(this.components);
             this.Bordertop = new System.Windows.Forms.PictureBox();
-            this.ev3ticks = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Borderbottom)).BeginInit();
@@ -223,12 +222,6 @@
             this.Bordertop.TabIndex = 2;
             this.Bordertop.TabStop = false;
             // 
-            // ev3ticks
-            // 
-            this.ev3ticks.Enabled = true;
-            this.ev3ticks.Interval = 1000;
-            this.ev3ticks.Tick += new System.EventHandler(this.ev3ticks_Tick);
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -240,7 +233,6 @@
             this.Text = "Main Menu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainMenu_FormClosed);
-            this.Load += new System.EventHandler(this.MainMenu_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -268,6 +260,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Exit_button;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Timer ev3ticks;
     }
 }

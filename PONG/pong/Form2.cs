@@ -23,15 +23,11 @@ namespace PONG
 
         int balpos1 = 5;
         int balpos2 = -5;
-        int selectedoption = 1;
 
         public MainMenu()
         {
             InitializeComponent();
             introsong.Play();
-            ev3Messenger = new EV3Messenger();
-            ev3Messenger.Connect("COM4");
-            ev3Messenger.SendMessage("stage", "1");
         }
 
 
@@ -44,7 +40,6 @@ namespace PONG
 
         private void Singleplayer_start_Click(object sender, EventArgs e)
         {
-            ev3Messenger.Disconnect();
             gamemode = 1;
             this.Hide();
             Form Pong = new Pong();
@@ -54,7 +49,6 @@ namespace PONG
 
         private void Multiplayer_start_Click(object sender, EventArgs e)
         {
-            ev3Messenger.Disconnect();
             gamemode = 2;
             this.Hide();
             Form Pong = new Pong();
@@ -110,70 +104,11 @@ namespace PONG
 
         private void Exit_button_Click(object sender, EventArgs e)
         {
-            ev3Messenger.Disconnect();
             this.Close();
             
         }
 
-        private void ev3ticks_Tick(object sender, EventArgs e)
-        {
-            EV3Message messagep1 = ev3Messenger.ReadMessage();
-            if (messagep1 != null && messagep1.MailboxTitle == "down")
-            {
-                if (selectedoption == 1)
-                {
-                    selectedoption = 3;  
-                }
-                else
-                {
-                    selectedoption -= 1;
-                }
-                
-            }
-
-            if (messagep1 != null && messagep1.MailboxTitle == "up")
-            {
-                if (selectedoption == 3)
-                {
-                    selectedoption = 1;
-                }
-                else
-                {
-                    selectedoption += 1;
-                }
-                
-            }
-
-
-
-
-            if (selectedoption == 1)
-            {
-                Singleplayer_start.BackColor = Color.White;
-                Multiplayer_start.BackColor = Color.Black;
-                Exit_button.BackColor = Color.Black;
-            }
-            if (selectedoption == 2)
-            {
-                Singleplayer_start.BackColor = Color.Black;
-                Multiplayer_start.BackColor = Color.White;
-                Exit_button.BackColor = Color.Black;
-            }
-            if (selectedoption == 3)
-            {
-                Singleplayer_start.BackColor = Color.Black;
-                Multiplayer_start.BackColor = Color.Black;
-                Exit_button.BackColor = Color.White;
-            }
-
-
-
-        }
-
-        private void MainMenu_Load(object sender, EventArgs e)
-        {
-            ev3Messenger.SendMessage("stage", "1");
-        }
+        
     }
     
 }

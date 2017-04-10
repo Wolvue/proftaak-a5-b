@@ -49,10 +49,11 @@ namespace PONG
         // winner
         int winner;
 
+        // ev3 connectie
         private EV3Messenger ev3Messenger1;
         private EV3Messenger ev3Messenger2;
 
-
+        // song generator
         Random songselect = new Random();
         Random speedbalgen = new Random();
 
@@ -68,7 +69,7 @@ namespace PONG
             ev3Messenger1 = new EV3Messenger();
             ev3Messenger2 = new EV3Messenger();
             jukebox();
-            ev3Messenger1.Connect("COM4");
+            ev3Messenger1.Connect("COM12");
             ev3Messenger2.Connect("COM5");
             winner = 0;
             gamemodep = MainMenu.gamemode;
