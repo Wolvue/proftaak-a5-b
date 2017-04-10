@@ -30,13 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.speelbord = new System.Windows.Forms.Panel();
+            this.pu1p2 = new System.Windows.Forms.PictureBox();
+            this.pu3p2 = new System.Windows.Forms.PictureBox();
+            this.pu4p2 = new System.Windows.Forms.PictureBox();
             this.pu4p1 = new System.Windows.Forms.PictureBox();
             this.pu3p1 = new System.Windows.Forms.PictureBox();
             this.pu2p1 = new System.Windows.Forms.PictureBox();
             this.Bal = new System.Windows.Forms.PictureBox();
             this.winnerp2 = new System.Windows.Forms.Label();
             this.winnerp1 = new System.Windows.Forms.Label();
-            this.pup2 = new System.Windows.Forms.PictureBox();
+            this.pu2p2 = new System.Windows.Forms.PictureBox();
             this.pu1p1 = new System.Windows.Forms.PictureBox();
             this.goal1 = new System.Windows.Forms.PictureBox();
             this.goal2 = new System.Windows.Forms.PictureBox();
@@ -51,11 +54,14 @@
             this.spelerev3 = new System.Windows.Forms.Timer(this.components);
             this.powerup = new System.Windows.Forms.Timer(this.components);
             this.speelbord.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pu1p2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pu3p2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pu4p2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pu4p1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pu3p1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pu2p1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pu2p2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pu1p1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goal1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.goal2)).BeginInit();
@@ -72,13 +78,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.speelbord.AutoSize = true;
             this.speelbord.BackColor = System.Drawing.Color.Black;
+            this.speelbord.Controls.Add(this.pu1p2);
+            this.speelbord.Controls.Add(this.pu3p2);
+            this.speelbord.Controls.Add(this.pu4p2);
             this.speelbord.Controls.Add(this.pu4p1);
             this.speelbord.Controls.Add(this.pu3p1);
             this.speelbord.Controls.Add(this.pu2p1);
             this.speelbord.Controls.Add(this.Bal);
             this.speelbord.Controls.Add(this.winnerp2);
             this.speelbord.Controls.Add(this.winnerp1);
-            this.speelbord.Controls.Add(this.pup2);
+            this.speelbord.Controls.Add(this.pu2p2);
             this.speelbord.Controls.Add(this.pu1p1);
             this.speelbord.Controls.Add(this.goal1);
             this.speelbord.Controls.Add(this.goal2);
@@ -94,11 +103,45 @@
             this.speelbord.Size = new System.Drawing.Size(705, 468);
             this.speelbord.TabIndex = 0;
             // 
+            // pu1p2
+            // 
+            this.pu1p2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pu1p2.BackColor = System.Drawing.Color.Transparent;
+            this.pu1p2.Image = global::PONG.Properties.Resources.invisibility_2;
+            this.pu1p2.Location = new System.Drawing.Point(461, 16);
+            this.pu1p2.Name = "pu1p2";
+            this.pu1p2.Size = new System.Drawing.Size(75, 75);
+            this.pu1p2.TabIndex = 21;
+            this.pu1p2.TabStop = false;
+            // 
+            // pu3p2
+            // 
+            this.pu3p2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pu3p2.BackColor = System.Drawing.Color.Transparent;
+            this.pu3p2.Image = global::PONG.Properties.Resources.speed;
+            this.pu3p2.Location = new System.Drawing.Point(461, 16);
+            this.pu3p2.Name = "pu3p2";
+            this.pu3p2.Size = new System.Drawing.Size(75, 75);
+            this.pu3p2.TabIndex = 20;
+            this.pu3p2.TabStop = false;
+            // 
+            // pu4p2
+            // 
+            this.pu4p2.BackColor = System.Drawing.Color.Transparent;
+            this.pu4p2.BackgroundImage = global::PONG.Properties.Resources.hadouken;
+            this.pu4p2.Location = new System.Drawing.Point(461, 16);
+            this.pu4p2.Name = "pu4p2";
+            this.pu4p2.Size = new System.Drawing.Size(75, 75);
+            this.pu4p2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pu4p2.TabIndex = 19;
+            this.pu4p2.TabStop = false;
+            this.pu4p2.Visible = false;
+            // 
             // pu4p1
             // 
             this.pu4p1.BackColor = System.Drawing.Color.Transparent;
             this.pu4p1.BackgroundImage = global::PONG.Properties.Resources.hadouken;
-            this.pu4p1.Location = new System.Drawing.Point(406, 213);
+            this.pu4p1.Location = new System.Drawing.Point(135, 16);
             this.pu4p1.Name = "pu4p1";
             this.pu4p1.Size = new System.Drawing.Size(75, 75);
             this.pu4p1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -110,7 +153,7 @@
             // 
             this.pu3p1.BackColor = System.Drawing.Color.Transparent;
             this.pu3p1.BackgroundImage = global::PONG.Properties.Resources.speed;
-            this.pu3p1.Location = new System.Drawing.Point(325, 213);
+            this.pu3p1.Location = new System.Drawing.Point(135, 16);
             this.pu3p1.Name = "pu3p1";
             this.pu3p1.Size = new System.Drawing.Size(75, 75);
             this.pu3p1.TabIndex = 17;
@@ -121,7 +164,7 @@
             // 
             this.pu2p1.BackColor = System.Drawing.Color.Transparent;
             this.pu2p1.BackgroundImage = global::PONG.Properties.Resources.swap;
-            this.pu2p1.Location = new System.Drawing.Point(238, 213);
+            this.pu2p1.Location = new System.Drawing.Point(135, 16);
             this.pu2p1.Name = "pu2p1";
             this.pu2p1.Size = new System.Drawing.Size(75, 75);
             this.pu2p1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -165,21 +208,22 @@
             this.winnerp1.Text = "WINNER";
             this.winnerp1.Visible = false;
             // 
-            // pup2
+            // pu2p2
             // 
-            this.pup2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pup2.BackColor = System.Drawing.Color.White;
-            this.pup2.Location = new System.Drawing.Point(461, 16);
-            this.pup2.Name = "pup2";
-            this.pup2.Size = new System.Drawing.Size(75, 75);
-            this.pup2.TabIndex = 12;
-            this.pup2.TabStop = false;
+            this.pu2p2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pu2p2.BackColor = System.Drawing.Color.Transparent;
+            this.pu2p2.Image = global::PONG.Properties.Resources.swap;
+            this.pu2p2.Location = new System.Drawing.Point(461, 16);
+            this.pu2p2.Name = "pu2p2";
+            this.pu2p2.Size = new System.Drawing.Size(75, 75);
+            this.pu2p2.TabIndex = 12;
+            this.pu2p2.TabStop = false;
             // 
             // pu1p1
             // 
             this.pu1p1.BackColor = System.Drawing.Color.Transparent;
             this.pu1p1.BackgroundImage = global::PONG.Properties.Resources.invisibility_2;
-            this.pu1p1.Location = new System.Drawing.Point(157, 213);
+            this.pu1p1.Location = new System.Drawing.Point(135, 16);
             this.pu1p1.Name = "pu1p1";
             this.pu1p1.Size = new System.Drawing.Size(75, 75);
             this.pu1p1.TabIndex = 11;
@@ -318,14 +362,18 @@
             this.Text = "Pong";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Pong_FormClosed);
+            this.Load += new System.EventHandler(this.Pong_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.speelbord.ResumeLayout(false);
             this.speelbord.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pu1p2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pu3p2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pu4p2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pu4p1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pu3p1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pu2p1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pu2p2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pu1p1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.goal1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.goal2)).EndInit();
@@ -354,13 +402,16 @@
         private System.Windows.Forms.Timer spelerev3;
         private System.Windows.Forms.Timer powerup;
         private System.Windows.Forms.PictureBox pu1p1;
-        private System.Windows.Forms.PictureBox pup2;
+        private System.Windows.Forms.PictureBox pu2p2;
         private System.Windows.Forms.PictureBox Bal;
         private System.Windows.Forms.Label winnerp2;
         private System.Windows.Forms.Label winnerp1;
         private System.Windows.Forms.PictureBox pu4p1;
         private System.Windows.Forms.PictureBox pu3p1;
         private System.Windows.Forms.PictureBox pu2p1;
+        private System.Windows.Forms.PictureBox pu1p2;
+        private System.Windows.Forms.PictureBox pu3p2;
+        private System.Windows.Forms.PictureBox pu4p2;
     }
 }
 

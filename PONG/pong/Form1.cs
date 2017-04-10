@@ -69,9 +69,10 @@ namespace PONG
             ev3Messenger2 = new EV3Messenger();
             jukebox();
             ev3Messenger1.Connect("COM4");
-            ev3Messenger2.Connect("COM4");
+            ev3Messenger2.Connect("COM5");
             winner = 0;
             gamemodep = MainMenu.gamemode;
+            ev3Messenger1.SendMessage("stage", "2");
         }
 
         //Het bewegen van speler 1
@@ -626,11 +627,16 @@ namespace PONG
 
         private void Pong_FormClosed(object sender, FormClosedEventArgs e)
         {
+            ev3Messenger1.Disconnect();
+            ev3Messenger2.Disconnect();
             Form Menu = new MainMenu();
             Menu.Show();
         }
 
-
+        private void Pong_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 
 }
