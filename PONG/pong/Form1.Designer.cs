@@ -110,11 +110,11 @@
             this.pup2rdy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pup2rdy.AutoSize = true;
             this.pup2rdy.ForeColor = System.Drawing.Color.Red;
-            this.pup2rdy.Location = new System.Drawing.Point(452, 109);
+            this.pup2rdy.Location = new System.Drawing.Point(418, 94);
             this.pup2rdy.Name = "pup2rdy";
-            this.pup2rdy.Size = new System.Drawing.Size(106, 17);
+            this.pup2rdy.Size = new System.Drawing.Size(190, 17);
             this.pup2rdy.TabIndex = 1;
-            this.pup2rdy.Text = "Powerup ready!";
+            this.pup2rdy.Text = "Powerup ready! Press Space";
             this.pup2rdy.Visible = false;
             // 
             // pu1p2
