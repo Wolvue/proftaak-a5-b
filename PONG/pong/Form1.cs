@@ -53,9 +53,15 @@ namespace PONG
         private EV3Messenger ev3Messenger1;
         private EV3Messenger ev3Messenger2;
 
-        // song generator
+        // song generator create
         Random songselect = new Random();
+        // bal snelheid gen create
         Random speedbalgen = new Random();
+        // powerup p2 gen
+        Random powerupgen2 = new Random();
+        int pup2;
+        int pu2active;
+        int pup2ready;
 
         System.Media.SoundPlayer backgroundsong1 = new System.Media.SoundPlayer(@"wavs\whatislove.wav");
         System.Media.SoundPlayer backgroundsong2 = new System.Media.SoundPlayer(@"wavs\imagine.wav");
@@ -69,54 +75,75 @@ namespace PONG
             ev3Messenger1 = new EV3Messenger();
             ev3Messenger2 = new EV3Messenger();
             jukebox();
-            ev3Messenger1.Connect("COM12");
-            ev3Messenger2.Connect("COM5");
+            ev3Messenger1.Connect("COM3");
+            ev3Messenger2.Connect("COM6");
             winner = 0;
             gamemodep = MainMenu.gamemode;
-            ev3Messenger1.SendMessage("stage", "2");
         }
 
         //Het bewegen van speler 1
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 'w')
+            if (gamemodep == 2)
             {
-                if (speler1.Top >= bordertop.Bottom)
-                { speler1.Location = new Point(speler1.Location.X, speler1.Location.Y - offsetP1); }
-                goalgemaakt(0);
-            }
-            else if (e.KeyChar == 's')
-            {
-                if (speler1.Bottom <= borderdown.Top)
+                if (e.KeyChar == 'w')
                 {
-                    speler1.Location = new Point(speler1.Location.X, speler1.Location.Y + offsetP1);
+                if (speler2.Top >= bordertop.Bottom)
+                  { speler2.Location = new Point(speler2.Location.X, speler2.Location.Y - offsetP2); }
+                goalgemaakt(0);
+                }
+                else if (e.KeyChar == 's')
+                {
+                if (speler2.Bottom <= borderdown.Top)
+                {
+                    speler2.Location = new Point(speler2.Location.X, speler2.Location.Y + offsetP2);
                     goalgemaakt(0);
                 }
             }
+            }
+           
 
             //Invisibility
             //Het activeren van de invisibility power up voor speler 1
-            if (e.KeyChar == '1')
-            {
-                powerup1 = 1;
+          //  if (e.KeyChar == '1')
+          //  {
+          //      powerup1 = 1;
                 //speler1.BackColor = Color.Black;
                 //invis1timer = 1;
-            }
+          //  }
             //Het activeren van de invisibility power up voor speler 2
-            if (e.KeyChar == '2')
-            {
+           // if (e.KeyChar == '2')
+           // {
                 //speler2.BackColor = Color.Black;
                // invis2timer = 1;
+          //  }
+
+            // als multiplayer actief is
+          if (gamemodep == 2)
+            {
+                // powerup p2 gen
+                if (e.KeyChar == ' ' && pup2ready == 1)
+                    {
+                    pup2 = powerupgen2.Next(1, 5);
+                    pup2ready = 0;
+                    pup2rdy.Visible = false;
+                    }
+                if (e.KeyChar == 'q')
+                {
+                    pu2active = 1;
+                    pup2 = 0;
+                }
             }
+            
 
             //Swap Controls
             //Het activeren van de swap power up voor speler 1
-            if (e.KeyChar == '3')
-            {
-                powerup1 = 2;
+         //   if (e.KeyChar == '3')
+           // {
+       //         powerup1 = 2;
                 //offsetP1 = -10;
                 //swap1timer = 1;
-            }
+     //       }
             //Het activeren van de swap power uup voor speler 2
             /*if (e.KeyChar == '4')
             {
@@ -124,24 +151,24 @@ namespace PONG
                 swap2timer = 1;
             }*/
 
-            if (e.KeyChar == '5')
-            {
-                powerup1 = 3;
+   //         if (e.KeyChar == '5')
+   //         {
+ //               powerup1 = 3;
                 //speedshotp1 = 1;
-            }
+//            }
 
-            if (e.KeyChar == '6')
-            {
+          //  if (e.KeyChar == '6')
+          //  {
                 //speedshotp2 = 1;
-            }
+          //  }
             
-            if (e.KeyChar == '7')
-            {
+        //    if (e.KeyChar == '7')
+         //   {
                 
-                powerup1 = 4;
+         //       powerup1 = 4;
                // hadouken = 1;
                 // Bal.BackColor = Color.DodgerBlue;
-            }
+          //  }
 
 
 
@@ -254,41 +281,106 @@ namespace PONG
                 {
                     powerup1 = 1;
                     pu1p1.Visible = true;
+                    pu2p1.Visible = false;
+                    pu3p1.Visible = false;
+                    pu4p1.Visible = false;
                 }
                 if (messagep1.ValueAsNumber == 2)
                 {
                     powerup1 = 2;
+                    pu1p1.Visible = false;
                     pu2p1.Visible = true;
+                    pu3p1.Visible = false;
+                    pu4p1.Visible = false;
                 }
                 if (messagep1.ValueAsNumber == 3)
                 {
                     powerup1 = 3;
+                    pu1p1.Visible = false;
+                    pu2p1.Visible = false;
                     pu3p1.Visible = true;
+                    pu4p1.Visible = false;
                 }
                 if (messagep1.ValueAsNumber == 4)
                 {
                     powerup1 = 4;
+                    pu1p1.Visible = false;
+                    pu2p1.Visible = false;
+                    pu3p1.Visible = false;
                     pu4p1.Visible = true;
                 }
             }
+            // pc control player 2 powerup
+            if (pup2 != 0)
+            {
+                if (pup2 == 1)
+                {
+                    powerup2 = 1;
+                    pu1p2.Visible = true;
+                    pu2p2.Visible = false;
+                    pu3p2.Visible = false;
+                    pu4p2.Visible = false;
+                }
+                if (pup2 == 2)
+                {
+                    powerup2 = 2;
+                    pu1p2.Visible = false;
+                    pu2p2.Visible = true;
+                    pu3p2.Visible = false;
+                    pu4p2.Visible = false;
+                }
+                if (pup2 == 3)
+                {
+                    powerup2 = 3;
+                    pu1p2.Visible = false;
+                    pu2p2.Visible = false;
+                    pu3p2.Visible = true;
+                    pu4p2.Visible = false;
+                }
+                if (pup2 == 4)
+                {
+                    powerup2 = 4;
+                    pu1p2.Visible = false;
+                    pu2p2.Visible = false;
+                    pu3p2.Visible = false;
+                    pu4p2.Visible = true;
+                }
+            }
+
             // slaat powerup op in c# p2
             if (messagep2 != null && messagep2.MailboxTitle == "powerupp2")
             {
                 if (messagep2.ValueAsNumber == 1)
                 {
                     powerup2 = 1;
+                    pu1p2.Visible = true;
+                    pu2p2.Visible = false;
+                    pu3p2.Visible = false;
+                    pu4p2.Visible = false;
                 }
                 if (messagep2.ValueAsNumber == 2)
                 {
                     powerup2 = 2;
+                    pu1p2.Visible = false;
+                    pu2p2.Visible = true;
+                    pu3p2.Visible = false;
+                    pu4p2.Visible = false;
                 }
                 if (messagep2.ValueAsNumber == 3)
                 {
                     powerup2 = 3;
+                    pu1p2.Visible = false;
+                    pu2p2.Visible = false;
+                    pu3p2.Visible = true;
+                    pu4p2.Visible = false;
                 }
                 if (messagep2.ValueAsNumber == 4)
                 {
                     powerup2 = 4;
+                    pu1p2.Visible = false;
+                    pu2p2.Visible = false;
+                    pu3p2.Visible = false;
+                    pu4p2.Visible = true;
                 }
             }
             
@@ -299,14 +391,14 @@ namespace PONG
                 // invisibility
                 if (powerup1 == 1)
                 {
-                    speler1.BackColor = Color.Black;
-                    invis1timer = 1;
+                    speler2.BackColor = Color.Black;
+                    invis2timer = 1;
                 }
                 // swap controls
                 if (powerup1 == 2)
                 {
-                    offsetP1 = -10;
-                    swap1timer = 1;
+                    offsetP2 = -10;
+                    swap2timer = 1;
                 }
                 // speedshot
                 if (powerup1 == 3)
@@ -332,19 +424,19 @@ namespace PONG
             {
 
 
-                if (messagep2 != null && messagep2.MailboxTitle == "activatep2")
+                if (messagep2 != null && messagep2.MailboxTitle == "activatep2" || pu2active == 1)
                 {
                     // invisibility
                     if (powerup2 == 1)
                     {
-                        speler2.BackColor = Color.Black;
-                        invis2timer = 1;
+                        speler1.BackColor = Color.Black;
+                        invis1timer = 1;
                     }
                     // swap controls
                     if (powerup2 == 2)
                     {
-                        offsetP2 = -10;
-                        swap2timer = 1;
+                        offsetP1 = -10;
+                        swap1timer = 1;
                     }
                     // speedshot
                     if (powerup2 == 3)
@@ -360,10 +452,11 @@ namespace PONG
                         ev3Messenger1.SendMessage("Hadouken", "Hadouken");
                     }
                     powerup2 = 0;
-                    pu1p1.Visible = false;
-                    pu2p1.Visible = false;
-                    pu3p1.Visible = false;
-                    pu4p1.Visible = false;
+                    pu2active = 0;
+                    pu1p2.Visible = false;
+                    pu2p2.Visible = false;
+                    pu3p2.Visible = false;
+                    pu4p2.Visible = false;
                 }
             }
         }
@@ -464,7 +557,7 @@ namespace PONG
                 
                 if (speedshotp2 == 1)
                 {
-                    speler2.BackColor = Color.LightYellow;
+                    speler2.BackColor = Color.Gold;
                     speedupX1 *= 2;
                     speedupX2 *= 2;
                     speedshotp2 = 2;
@@ -479,10 +572,10 @@ namespace PONG
 
             }
 
-            // goal gemaakt door bot
+            // goal gemaakt door bot / speler2
             if (Bal.Left <= goal1.Right)
             {
-                if (hadouken == 1)
+                if (hadouken == 1) // double points als hadouken actief is
                 {
                     puntenspeler2 += 2;
                     hadouken = 0;
@@ -492,7 +585,16 @@ namespace PONG
                 {
                 puntenspeler2 += 1;
                 }
+                // resetten powerup dingen
+                speler1.BackColor = Color.White;
+                speler2.BackColor = Color.White;
+                ev3Messenger1.SendMessage("motor", "2");
+                if (gamemodep == 2)
+                {
+                powerupp2ready();
+                }
                 
+
                 punten2.Text = Convert.ToString(puntenspeler2);
                 Bal.Location = new Point(speler1.Right + 5, (speler1.Top + speler1.Bottom) / 2);
                 speedupX1 = -5;
@@ -519,7 +621,7 @@ namespace PONG
                 }
 
             }
-            // goal gemaakt door 1
+            // goal gemaakt door speler 1
             if (Bal.Right >= goal2.Left)
             {
                 if (hadouken == 1)
@@ -532,6 +634,9 @@ namespace PONG
                 {
                     puntenspeler1 += 1;
                 }
+                speler1.BackColor = Color.White;
+                speler2.BackColor = Color.White;
+                ev3Messenger1.SendMessage("motor", "1");
                 punten1.Text = Convert.ToString(puntenspeler1);
                 Bal.Location = new Point(speler2.Left - 18, (speler2.Top + speler2.Bottom) / 2);
                 speedupX1 = -5;
@@ -603,7 +708,7 @@ namespace PONG
             if (swap1timer >= 1)
             {
                 swap1timer++;
-                if (swap1timer == 4)
+                if (swap1timer == 8)
                 {
                     offsetP1 = 10;
                     swap1timer = 0;
@@ -614,7 +719,7 @@ namespace PONG
             if (swap2timer >= 1)
             {
                 swap2timer++;
-                if (swap2timer == 4)
+                if (swap2timer == 8)
                 {
                     offsetP2 = 10;
                     swap2timer = 0;
@@ -634,10 +739,13 @@ namespace PONG
             Menu.Show();
         }
 
-        private void Pong_Load(object sender, EventArgs e)
+        private void powerupp2ready()
         {
-            
+            pup2rdy.Visible = true;
+            pup2ready = 1;
         }
+
+
     }
 
 }

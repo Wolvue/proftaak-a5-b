@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.speelbord = new System.Windows.Forms.Panel();
+            this.pup2rdy = new System.Windows.Forms.Label();
             this.pu1p2 = new System.Windows.Forms.PictureBox();
             this.pu3p2 = new System.Windows.Forms.PictureBox();
             this.pu4p2 = new System.Windows.Forms.PictureBox();
@@ -78,6 +79,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.speelbord.AutoSize = true;
             this.speelbord.BackColor = System.Drawing.Color.Black;
+            this.speelbord.Controls.Add(this.pup2rdy);
             this.speelbord.Controls.Add(this.pu1p2);
             this.speelbord.Controls.Add(this.pu3p2);
             this.speelbord.Controls.Add(this.pu4p2);
@@ -103,6 +105,18 @@
             this.speelbord.Size = new System.Drawing.Size(705, 468);
             this.speelbord.TabIndex = 0;
             // 
+            // pup2rdy
+            // 
+            this.pup2rdy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pup2rdy.AutoSize = true;
+            this.pup2rdy.ForeColor = System.Drawing.Color.Red;
+            this.pup2rdy.Location = new System.Drawing.Point(452, 109);
+            this.pup2rdy.Name = "pup2rdy";
+            this.pup2rdy.Size = new System.Drawing.Size(106, 17);
+            this.pup2rdy.TabIndex = 1;
+            this.pup2rdy.Text = "Powerup ready!";
+            this.pup2rdy.Visible = false;
+            // 
             // pu1p2
             // 
             this.pu1p2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -111,8 +125,10 @@
             this.pu1p2.Location = new System.Drawing.Point(461, 16);
             this.pu1p2.Name = "pu1p2";
             this.pu1p2.Size = new System.Drawing.Size(75, 75);
+            this.pu1p2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pu1p2.TabIndex = 21;
             this.pu1p2.TabStop = false;
+            this.pu1p2.Visible = false;
             // 
             // pu3p2
             // 
@@ -122,11 +138,14 @@
             this.pu3p2.Location = new System.Drawing.Point(461, 16);
             this.pu3p2.Name = "pu3p2";
             this.pu3p2.Size = new System.Drawing.Size(75, 75);
+            this.pu3p2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pu3p2.TabIndex = 20;
             this.pu3p2.TabStop = false;
+            this.pu3p2.Visible = false;
             // 
             // pu4p2
             // 
+            this.pu4p2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pu4p2.BackColor = System.Drawing.Color.Transparent;
             this.pu4p2.BackgroundImage = global::PONG.Properties.Resources.hadouken;
             this.pu4p2.Location = new System.Drawing.Point(461, 16);
@@ -213,11 +232,13 @@
             this.pu2p2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pu2p2.BackColor = System.Drawing.Color.Transparent;
             this.pu2p2.Image = global::PONG.Properties.Resources.swap;
-            this.pu2p2.Location = new System.Drawing.Point(461, 16);
+            this.pu2p2.Location = new System.Drawing.Point(461, 12);
             this.pu2p2.Name = "pu2p2";
             this.pu2p2.Size = new System.Drawing.Size(75, 75);
+            this.pu2p2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pu2p2.TabIndex = 12;
             this.pu2p2.TabStop = false;
+            this.pu2p2.Visible = false;
             // 
             // pu1p1
             // 
@@ -362,7 +383,6 @@
             this.Text = "Pong";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Pong_FormClosed);
-            this.Load += new System.EventHandler(this.Pong_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form1_KeyPress);
             this.speelbord.ResumeLayout(false);
             this.speelbord.PerformLayout();
@@ -412,6 +432,7 @@
         private System.Windows.Forms.PictureBox pu1p2;
         private System.Windows.Forms.PictureBox pu3p2;
         private System.Windows.Forms.PictureBox pu4p2;
+        private System.Windows.Forms.Label pup2rdy;
     }
 }
 
